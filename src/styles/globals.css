@@ -16,8 +16,15 @@ a {
 }
 
 #container-home{
-  position: relative;
-  /* z-index: 1000; */
+  height: 100vh;
+  /* position: relative; */
+  clip-path: 
+  polygon(
+    0% 0%, 
+    100% 0%,
+    100% calc(100% - 220px),
+    0% 100%
+  );
 }
 
 #tsparticles{
@@ -50,8 +57,10 @@ a {
   }
 }
 
+
 #ct{
   animation: float 5s ease-in-out infinite;
+  margin-top: -250px;
 }
 
 #ct div:nth-child(3){
@@ -89,4 +98,10 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #55a647; 
+}
+#about{
+  background-image:  linear-gradient(to right, rgba(24, 23, 23, 0.886),  rgba(0, 0, 0, 0.897)),
+  url("../../public/assets/bg.jpg");
+  filter: brightness(80%);
+  background-size: cover;
 }
