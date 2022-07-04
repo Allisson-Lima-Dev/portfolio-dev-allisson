@@ -6,6 +6,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
 import ImageHome from "/public/assets/home.png";
+import ImageSobre from "/public/assets/sobre.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
 
 export default function Home() {
@@ -61,14 +62,13 @@ export default function Home() {
               />
             </Box>
           </Flex>
+        </Layout>
+      </Flex>
+      <Box w="full" mb="80px">
+        <Layout>
           <Flex w="full" justify={"space-between"} id="ct">
             {DataAboutCard.map((item, idx) => (
-              <Box
-                key={idx}
-                zIndex={2000}
-                mt="100px"
-                id={idx === 1 ? "card" : ""}
-              >
+              <Box key={idx} zIndex={2000} mt="100px">
                 <CardAbout
                   icon={item.icon}
                   title={item.title}
@@ -77,11 +77,45 @@ export default function Home() {
               </Box>
             ))}
           </Flex>
+          <Flex w="full" justify={"space-between"} mt="50px">
+            <Box>
+              <Image src={ImageSobre.src} w="100%" h="100%" />
+            </Box>
+            <Box w="50%">
+              <Text fontSize={"40px"} color="#6EDB5C">
+                Sobre
+              </Text>
+              <Text fontSize={"19px"}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corporis alias inventore ullam. Nemo sed inventore illo repellat
+                mollitia odit. Mollitia aspernatur placeat ducimus deleniti
+                assumenda nulla tempora, saepe dicta rem! Lorem ipsum dolor sit
+                amet consectetur, adipisicing elit. Facere totam repellat
+                blanditiis sit, dolores fugiat! Dolore quos libero animi vitae
+                sunt veniam doloremque, delectus hic totam velit quasi. Ab,
+                molestiae.
+              </Text>
+              <Flex w="full" justify={"right"}>
+                <Button
+                  bg="#6EDB5C"
+                  color={"#fff"}
+                  w="164px"
+                  h="41px"
+                  fontSize={"18px"}
+                  mt="42px"
+                >
+                  Baixar CV
+                </Button>
+              </Flex>
+            </Box>
+          </Flex>
         </Layout>
-      </Flex>
-      <Box h="100vh" w="full">
+      </Box>
+      <Box bg="#2F2E2E" w="full" id="about">
         <Layout>
-          <Text>Ola</Text>
+          <Box h="100vh">
+            <Text>Habilidades</Text>
+          </Box>
         </Layout>
       </Box>
     </Box>
