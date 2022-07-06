@@ -4,7 +4,7 @@ export function Particles() {
   const [Lg, md] = useMediaQuery(["(min-width: 990px)", "(max-width: 690px)"]);
   const configParticles = {
     fullScreen: { enable: false, zIndex: 0 },
-    fpsLimit: 120,
+    fpsLimit: 130,
     interactivity: {
       events: {
         onClick: {
@@ -19,7 +19,7 @@ export function Particles() {
       },
       modes: {
         push: {
-          quantity: 5,
+          quantity: 8,
         },
         repulse: {
           distance: 200,
@@ -36,7 +36,7 @@ export function Particles() {
         distance: 150,
         enable: true,
         opacity: 0.6,
-        width: 2,
+        width: 3,
       },
       collisions: {
         // enable: true,
@@ -55,7 +55,7 @@ export function Particles() {
           // enable: true,
           area: 800,
         },
-        value: !Lg ? (md ? 30 : 50) : 90,
+        value: !Lg ? (md ? 30 : 60) : 250,
       },
       opacity: {
         value: !Lg ? (md ? 0.3 : 0.4) : 0.5,
@@ -64,7 +64,7 @@ export function Particles() {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 6 },
+        value: { min: 2, max: 7 },
       },
     },
     // detectRetina: true,
