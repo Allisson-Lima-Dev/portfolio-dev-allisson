@@ -13,7 +13,7 @@ export function CardAbout({ description, icon, title }: IPropsCard) {
     <Flex
       w="307px"
       h="350px"
-      bg="#2F2E2E"
+      bg="#0f0f0f"
       align={"center"}
       flexDir="column"
       borderRadius={"10px"}
@@ -27,7 +27,7 @@ export function CardAbout({ description, icon, title }: IPropsCard) {
         height={"71px"}
         color="#6EDB5C"
         style={{ marginTop: 50 }}
-        className='icon'
+        className="icon"
       />
       <Text fontSize={"18px"} color="#fff" mt="16px" className="title">
         {title}
