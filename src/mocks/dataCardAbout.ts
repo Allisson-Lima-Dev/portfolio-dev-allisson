@@ -17,4 +17,58 @@ export const DataAboutCard = [
     description:
       "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
   },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
+  {
+    icon: "la:pencil-ruler",
+    title: "UI/UX Designer",
+    description:
+      "Estou estudando UI/UX para criação de interfaces para complementar o conhecimento da experiência do usuário.",
+  },
 ];
