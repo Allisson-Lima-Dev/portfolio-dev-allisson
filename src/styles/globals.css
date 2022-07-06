@@ -33,6 +33,12 @@ a {
   position: absolute;
   /* z-index: 1000; */
 }
+#tsparticlesSkills{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+}
 #name{
         white-space: nowrap;
         overflow: hidden;
@@ -100,8 +106,51 @@ a {
   background: #55a647; 
 }
 #about{
-  background-image:  linear-gradient(to right, rgba(24, 23, 23, 0.886),  rgba(0, 0, 0, 0.897)),
+  background-image:  linear-gradient(to right, #0f0f0f,  rgba(0, 0, 0, 0.932)),
   url("../../public/assets/bg.jpg");
   filter: brightness(80%);
   background-size: cover;
+  /* height: 100vh; */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6EDB5C !important;
+}
+.swiper-pagination-bullet{
+  background-color: #6EDB5C !important;
+}
+.swiper-button-prev{
+  color: #6EDB5C !important;
+}
+.swiper-button-next{
+  color: #6EDB5C !important;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  /* text-align: center; */
+  font-size: 18px;
+  /* background: rgb(239, 5, 5); */
+  
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+}
+.mySwiper{
+  height: 300px;
+  margin-top: -60px;
 }
