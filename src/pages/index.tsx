@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <Box>
+    <Box bg="#FBFBFB">
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
@@ -102,9 +102,55 @@ export default function Home() {
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px" bg="#FBFBFB">
+      <Box w="full" mb="80px" mt="-230px">
         <Layout>
-          <Flex
+          <Flex>
+            <Swiper
+              style={{ zIndex: 2000 }}
+              slidesPerView={3}
+              spaceBetween={5}
+              // navigation={true}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+                848: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                648: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                200: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                  navigation: false,
+                },
+              }}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              keyboard={{
+                enabled: true,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Keyboard, Pagination, Navigation, Autoplay]}
+              className="mySwiperAbout"
+            >
+              {DataAboutCard.slice(0, 3).map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardAbout
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Flex>
+          {/* <Flex
             w="full"
             justify={{ base: "center", lg: "space-between" }}
             align="center"
@@ -120,7 +166,7 @@ export default function Home() {
                 />
               </Box>
             ))}
-          </Flex>
+          </Flex> */}
           <Flex
             w="full"
             justify={"space-between"}
@@ -213,7 +259,7 @@ export default function Home() {
               style={{ zIndex: 2000 }}
               slidesPerView={7}
               spaceBetween={5}
-              navigation={true}
+              // navigation={true}
               breakpoints={{
                 1024: {
                   slidesPerView: 7,
@@ -225,7 +271,7 @@ export default function Home() {
                 },
                 200: {
                   slidesPerView: 3,
-                  spaceBetween: 50,
+                  spaceBetween: 10,
                   navigation: false,
                 },
               }}
