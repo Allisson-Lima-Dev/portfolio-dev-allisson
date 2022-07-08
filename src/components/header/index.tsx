@@ -8,14 +8,19 @@ export function Header() {
       color="#fff"
       justify="space-between"
       align={"center"}
-      px={{ base: "50px", lg: "0" }}
+      px={{ base: "0px", lg: "80px" }}
       mt="35px"
       zIndex={1000}
     >
       <Text fontSize={"37px"} fontWeight="bold" color={"#6EDB5C"}>
         Allisson
       </Text>
-      <Flex w="30%" justifyContent={"space-between"} fontSize="20px">
+      <Flex
+        w="30%"
+        justifyContent={"space-between"}
+        fontSize="20px"
+        display={{ base: "none", lg: "flex" }}
+      >
         <Text>Home</Text>
         <Text>Sobre</Text>
         <Text>Skills</Text>
