@@ -1,13 +1,27 @@
 import React from "react";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
-import { CardAbout, Header, Layout } from "~/components/index";
+import {
+  CardAbout,
+  Header,
+  Layout,
+  RowSkills,
+  CardSkill,
+} from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
+import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
 import ImageHome from "/public/assets/home.png";
 import ImageSobre from "/public/assets/sobre.png";
+import ImageSkills from "/public/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
+import { dataSkills, iconsDataSkill } from "~/mocks/dataSkills";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, Pagination, Navigation, Autoplay } from "swiper";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -18,9 +32,15 @@ export default function Home() {
   const particlesLoaded = async (container: Container | undefined) => {
     // console.log(container);
   };
+
   return (
     <Box>
-      <Flex bg="#2F2E2E" h="100vh" id="container-home" zIndex={1000}>
+      <Flex
+        bg="#0f0f0f"
+        h={{ base: "1000px", lg: "100vh" }}
+        id="container-home"
+        zIndex={1000}
+      >
         <Particles
           id="tsparticles"
           init={particlesInit}
@@ -29,15 +49,33 @@ export default function Home() {
         />
         <Layout>
           <Header />
-          <Flex w="full" justifyContent="space-between" mt="80px">
-            <Box mt="100px" w="42%" zIndex={2000}>
-              <Text fontSize={"37px"} color="#6EDB5C">
+          <Flex
+            w="full"
+            justifyContent="space-between"
+            mt={{ base: "0px", lg: "80px" }}
+            px={{ base: "0", lg: "80px" }}
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            <Box
+              mt={{ base: "0px", lg: "100px" }}
+              w={{ base: "100%", lg: "42%" }}
+              zIndex={2000}
+            >
+              <Text fontSize={{ base: "25px", md: "37px" }} color="#6EDB5C">
                 Olá,
               </Text>
-              <Text fontSize={"50px"} color="#fff" id="name">
+              <Text
+                fontSize={{ base: "30px", md: "50px" }}
+                color="#fff"
+                id="name"
+              >
                 Meu nome é <span style={{ color: "#6EDB5C" }}>Allisson</span>
               </Text>
-              <Text fontSize={"22px"} w="80%" color="#fff">
+              <Text
+                fontSize={{ base: "17px", md: "22px" }}
+                w="80%"
+                color="#fff"
+              >
                 Sou desenvolvedor full stack, minha expertise é o{" "}
                 <span style={{ color: "#6EDB5C" }}>front end</span> e atualmente
                 estudando UI/UX Designer.
@@ -45,29 +83,35 @@ export default function Home() {
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
-                w="193px"
+                w={{ base: "150px", lg: "193px" }}
                 h="50px"
-                fontSize={"20px"}
+                fontSize={{ base: "17px", md: "20px" }}
                 mt="38px"
               >
                 Saber Mais
               </Button>
             </Box>
-            <Box zIndex={1000}>
+            <Box zIndex={2000}>
               <Image
                 src={ImageHome.src}
                 alt="Imagem do Allisson"
                 w="100%"
-                h="100%"
+                // h="100%"
               />
             </Box>
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px">
+      <Box w="full" mb="80px" bg="#FBFBFB">
         <Layout>
-          <Flex w="full" justify={"space-between"} id="ct">
-            {DataAboutCard.map((item, idx) => (
+          <Flex
+            w="full"
+            justify={{ base: "center", lg: "space-between" }}
+            align="center"
+            // id="ct"
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            {DataAboutCard.slice(0, 3).map((item, idx) => (
               <Box key={idx} zIndex={2000} mt="100px">
                 <CardAbout
                   icon={item.icon}
@@ -77,11 +121,21 @@ export default function Home() {
               </Box>
             ))}
           </Flex>
-          <Flex w="full" justify={"space-between"} mt="50px">
+          <Flex
+            w="full"
+            justify={"space-between"}
+            mt="50px"
+            flexDir={{ base: "column", lg: "row" }}
+          >
             <Box>
-              <Image src={ImageSobre.src} w="100%" h="100%" />
+              <Image
+                src={ImageSobre.src}
+                w="100%"
+                h="100%"
+                alt="Image do Sobre de Allisson"
+              />
             </Box>
-            <Box w="50%">
+            <Box w={{ base: "100%", lg: "50%" }}>
               <Text fontSize={"40px"} color="#6EDB5C">
                 Sobre
               </Text>
@@ -111,13 +165,89 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Box bg="#2F2E2E" w="full" id="about">
+      <Flex w="full" id="about" zIndex={1000} color="#fff">
+        <Particles
+          id="tsparticlesSkills"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={configParticlesSkills()}
+        />
         <Layout>
-          <Box h="100vh">
-            <Text>Habilidades</Text>
-          </Box>
+          <Text fontSize={"40px"} color="#fff" mb="20px" mt="80px">
+            Minhas Habilidades
+          </Text>
+          <Flex
+            w="full"
+            justify={"space-between"}
+            h="full"
+            zIndex={2000}
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            <Box
+              w={{ base: "100%", lg: "50%" }}
+              ml={{ base: "0", xl: "60px" }}
+              zIndex={2000}
+            >
+              {dataSkills.map((item, idx) => (
+                <RowSkills skill={item.skill} level={item.level} key={idx} />
+              ))}
+            </Box>
+            <Flex
+              justify={"right"}
+              w={{ base: "100%", lg: "70%" }}
+              zIndex={2000}
+            >
+              <Image
+                src={ImageSkills.src}
+                // w="100%"
+                // h="100%"
+                alt="Image do Sobre de Allisson"
+              />
+            </Flex>
+          </Flex>
+          <Text fontSize={"40px"} color="#fff" mb="20px">
+            Outras Habilidades
+          </Text>
+          <Flex my="80px">
+            <Swiper
+              style={{ zIndex: 2000 }}
+              slidesPerView={7}
+              spaceBetween={5}
+              navigation={true}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 7,
+                  spaceBetween: 50,
+                },
+                848: {
+                  slidesPerView: 5,
+                  spaceBetween: 50,
+                },
+                200: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                  navigation: false,
+                },
+              }}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              keyboard={{
+                enabled: true,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Keyboard, Pagination, Navigation, Autoplay]}
+              className="mySwiper"
+            >
+              {iconsDataSkill.map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardSkill icon={item.icon} title={item.title} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Flex>
         </Layout>
-      </Box>
+      </Flex>
     </Box>
   );
 }
