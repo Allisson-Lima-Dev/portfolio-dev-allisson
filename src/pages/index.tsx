@@ -35,7 +35,12 @@ export default function Home() {
 
   return (
     <Box>
-      <Flex bg="#0f0f0f" h="100vh" id="container-home" zIndex={1000}>
+      <Flex
+        bg="#0f0f0f"
+        h={{ base: "1000px", lg: "100vh" }}
+        id="container-home"
+        zIndex={1000}
+      >
         <Particles
           id="tsparticles"
           init={particlesInit}
@@ -44,15 +49,33 @@ export default function Home() {
         />
         <Layout>
           <Header />
-          <Flex w="full" justifyContent="space-between" mt="80px">
-            <Box mt="100px" w="42%" zIndex={2000}>
-              <Text fontSize={"37px"} color="#6EDB5C">
+          <Flex
+            w="full"
+            justifyContent="space-between"
+            mt={{ base: "0px", lg: "80px" }}
+            px={{ base: "0", lg: "80px" }}
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            <Box
+              mt={{ base: "0px", lg: "100px" }}
+              w={{ base: "100%", lg: "42%" }}
+              zIndex={2000}
+            >
+              <Text fontSize={{ base: "25px", md: "37px" }} color="#6EDB5C">
                 Olá,
               </Text>
-              <Text fontSize={"50px"} color="#fff" id="name">
+              <Text
+                fontSize={{ base: "30px", md: "50px" }}
+                color="#fff"
+                id="name"
+              >
                 Meu nome é <span style={{ color: "#6EDB5C" }}>Allisson</span>
               </Text>
-              <Text fontSize={"22px"} w="80%" color="#fff">
+              <Text
+                fontSize={{ base: "17px", md: "22px" }}
+                w="80%"
+                color="#fff"
+              >
                 Sou desenvolvedor full stack, minha expertise é o{" "}
                 <span style={{ color: "#6EDB5C" }}>front end</span> e atualmente
                 estudando UI/UX Designer.
@@ -60,32 +83,32 @@ export default function Home() {
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
-                w="193px"
+                w={{ base: "150px", lg: "193px" }}
                 h="50px"
-                fontSize={"20px"}
+                fontSize={{ base: "17px", md: "20px" }}
                 mt="38px"
               >
                 Saber Mais
               </Button>
             </Box>
-            <Box zIndex={1000}>
+            <Box zIndex={2000}>
               <Image
                 src={ImageHome.src}
                 alt="Imagem do Allisson"
                 w="100%"
-                h="100%"
+                // h="100%"
               />
             </Box>
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px">
+      <Box w="full" mb="80px" bg="#FBFBFB">
         <Layout>
           <Flex
             w="full"
             justify={{ base: "center", lg: "space-between" }}
             align="center"
-            id="ct"
+            // id="ct"
             flexDir={{ base: "column", lg: "row" }}
           >
             {DataAboutCard.slice(0, 3).map((item, idx) => (
@@ -98,7 +121,12 @@ export default function Home() {
               </Box>
             ))}
           </Flex>
-          <Flex w="full" justify={"space-between"} mt="50px">
+          <Flex
+            w="full"
+            justify={"space-between"}
+            mt="50px"
+            flexDir={{ base: "column", lg: "row" }}
+          >
             <Box>
               <Image
                 src={ImageSobre.src}
@@ -107,7 +135,7 @@ export default function Home() {
                 alt="Image do Sobre de Allisson"
               />
             </Box>
-            <Box w="50%">
+            <Box w={{ base: "100%", lg: "50%" }}>
               <Text fontSize={"40px"} color="#6EDB5C">
                 Sobre
               </Text>
@@ -148,13 +176,27 @@ export default function Home() {
           <Text fontSize={"40px"} color="#fff" mb="20px" mt="80px">
             Minhas Habilidades
           </Text>
-          <Flex w="full" justify={"space-between"} h="full" zIndex={2000}>
-            <Box w="50%" ml="60px" zIndex={2000}>
+          <Flex
+            w="full"
+            justify={"space-between"}
+            h="full"
+            zIndex={2000}
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            <Box
+              w={{ base: "100%", lg: "50%" }}
+              ml={{ base: "0", xl: "60px" }}
+              zIndex={2000}
+            >
               {dataSkills.map((item, idx) => (
                 <RowSkills skill={item.skill} level={item.level} key={idx} />
               ))}
             </Box>
-            <Flex justify={"right"} w="70%" zIndex={2000}>
+            <Flex
+              justify={"right"}
+              w={{ base: "100%", lg: "70%" }}
+              zIndex={2000}
+            >
               <Image
                 src={ImageSkills.src}
                 // w="100%"
