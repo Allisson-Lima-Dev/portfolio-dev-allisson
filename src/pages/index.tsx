@@ -269,7 +269,7 @@ export default function Home() {
             </Flex>
           </Flex>
           <Text fontSize={"40px"} color="#fff" mb="20px">
-            Outras Habilidades
+            Hard Skills
           </Text>
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
