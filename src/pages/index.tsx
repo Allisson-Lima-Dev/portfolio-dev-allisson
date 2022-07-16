@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <Box bg="#FBFBFB">
+    <Box bg="#f8f8f8">
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
@@ -53,7 +53,6 @@ export default function Home() {
             w="full"
             justifyContent="space-between"
             mt={{ base: "0px", lg: "80px" }}
-            px={{ base: "0", lg: "80px" }}
             flexDir={{ base: "column", lg: "row" }}
           >
             <Box
@@ -91,14 +90,14 @@ export default function Home() {
                 Saber Mais
               </Button>
             </Box>
-            <Box zIndex={2000}>
+            <Flex zIndex={2000} align="center" justify={"center"}>
               <Image
                 src={ImageHome.src}
                 alt="Imagem do Allisson"
-                w="100%"
+                // w="100%"
                 // h="100%"
               />
-            </Box>
+            </Flex>
           </Flex>
         </Layout>
       </Flex>
@@ -111,6 +110,10 @@ export default function Home() {
               spaceBetween={5}
               // navigation={true}
               breakpoints={{
+                1500: {
+                  slidesPerView: 3,
+                  spaceBetween: 200,
+                },
                 1024: {
                   slidesPerView: 3,
                   spaceBetween: 50,
@@ -229,16 +232,30 @@ export default function Home() {
             zIndex={2000}
             flexDir={{ base: "column", lg: "row" }}
           >
-            <Box
-              w={{ base: "100%", lg: "50%" }}
-              ml={{ base: "0", xl: "60px" }}
-              zIndex={2000}
-            >
-              {dataSkills.map((item, idx) => (
-                <RowSkills skill={item.skill} level={item.level} key={idx} />
-              ))}
+            <Box w={{ base: "100%", lg: "50%" }} zIndex={2000}>
+              <Text fontSize={"19px"}>
+                Durante minha caminhada aprendi habilidades de Soft Skill, uma
+                que destaco como principal a{" "}
+                <span style={{ color: "#6EDB5C" }}>Comunicação</span> que é
+                capacidade de explicar ideias ou métodos de trabalho com
+                clareza, fazer e responder perguntas de forma produtiva em um
+                ambiente de grupo e ajudar a reduzir conflitos por meio de um
+                diálogo respeitoso, é algo importante para ter sucesso na
+                codificação
+              </Text>
+              <Button
+                bg="#6EDB5C"
+                color={"#fff"}
+                w={{ base: "150px", lg: "153px" }}
+                h="45px"
+                fontSize={{ base: "17px", md: "20px" }}
+                mt="38px"
+              >
+                Saber Mais
+              </Button>
             </Box>
             <Flex
+              mt={{ base: "40px", lg: "0" }}
               justify={"right"}
               w={{ base: "100%", lg: "70%" }}
               zIndex={2000}
@@ -254,7 +271,7 @@ export default function Home() {
           <Text fontSize={"40px"} color="#fff" mb="20px">
             Outras Habilidades
           </Text>
-          <Flex my="80px">
+          <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
               style={{ zIndex: 2000 }}
               slidesPerView={7}
@@ -288,6 +305,56 @@ export default function Home() {
               {iconsDataSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardSkill icon={item.icon} title={item.title} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Flex>
+          <Flex>
+            <Swiper
+              style={{ zIndex: 2000 }}
+              slidesPerView={3}
+              spaceBetween={5}
+              // navigation={true}
+              breakpoints={{
+                1500: {
+                  slidesPerView: 3,
+                  spaceBetween: 200,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+                848: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                648: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                200: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                  navigation: false,
+                },
+              }}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              keyboard={{
+                enabled: true,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Keyboard, Pagination, Navigation, Autoplay]}
+              className="mySwiperAbout"
+            >
+              {DataAboutCard.slice(0, 3).map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardAbout
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
