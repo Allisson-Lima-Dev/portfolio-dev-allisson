@@ -13,7 +13,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
 import ImageHome from "~/assets/home.png";
-import ImageSobre from "~/assets/sobre.png";
+import ImageSobre from "~/assets/Sobre.png";
 import ImageSkills from "~/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
 import { dataSkills, iconsDataSkill } from "~/mocks/dataSkills";
