@@ -13,11 +13,11 @@ export function CardAbout({ description, icon, title }: IPropsCard) {
     <Flex
       w="307px"
       h="350px"
-      bg="#0f0f0f"
+      bg="#131313"
       align={"center"}
       flexDir="column"
       borderRadius={"10px"}
-      boxShadow="dark-lg"
+      boxShadow="xl"
       px="30px"
       id="card"
     >

@@ -8,7 +8,7 @@ interface layoutProps {
 
 export function Layout({ children, marginB }: layoutProps) {
   return (
-    <Box w="100%" mx="auto">
+    <Box w="100%" mx="auto" px={{ base: "20px", md: "40px" }}>
       <Box
         maxW="1400px"
         mx="auto"

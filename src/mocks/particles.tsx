@@ -55,7 +55,7 @@ export function Particles() {
           // enable: true,
           area: 800,
         },
-        value: !Lg ? (md ? 30 : 60) : 250,
+        value: !Lg ? (md ? 80 : 90) : 250,
       },
       opacity: {
         value: !Lg ? (md ? 0.3 : 0.4) : 0.5,
@@ -64,7 +64,7 @@ export function Particles() {
         type: "circle",
       },
       size: {
-        value: { min: 2, max: 7 },
+        value: { min: 3, max: 7 },
       },
     },
     // detectRetina: true,

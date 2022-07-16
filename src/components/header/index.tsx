@@ -8,7 +8,6 @@ export function Header() {
       color="#fff"
       justify="space-between"
       align={"center"}
-      px={{ base: "0px", lg: "80px" }}
       mt="35px"
       zIndex={1000}
     >
