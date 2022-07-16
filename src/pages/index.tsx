@@ -12,9 +12,9 @@ import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
-import ImageHome from "/public/assets/home.png";
-import ImageSobre from "/public/assets/sobre.png";
-import ImageSkills from "/public/assets/imgSkills.png";
+import ImageHome from "~/assets/home.png";
+import ImageSobre from "~/assets/Sobre.png";
+import ImageSkills from "~/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
 import { dataSkills, iconsDataSkill } from "~/mocks/dataSkills";
 import "swiper/css";
@@ -269,7 +269,7 @@ export default function Home() {
             </Flex>
           </Flex>
           <Text fontSize={"40px"} color="#fff" mb="20px">
-            Outras Habilidades
+            Hard Skills
           </Text>
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
