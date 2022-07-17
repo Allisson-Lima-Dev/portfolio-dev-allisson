@@ -16,7 +16,11 @@ import ImageHome from "~/assets/home.png";
 import ImageSobre from "~/assets/Sobre.png";
 import ImageSkills from "~/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
-import { dataSkills, iconsDataSkill } from "~/mocks/dataSkills";
+import {
+  dataSkills,
+  iconsDataSkill,
+  dataCardSoftSkill,
+} from "~/mocks/dataSkills";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -256,14 +260,14 @@ export default function Home() {
             </Box>
             <Flex
               mt={{ base: "40px", lg: "0" }}
-              justify={"right"}
+              mb={{ base: "40px", lg: "0" }}
+              justify={{ base: "left", lg: "right" }}
               w={{ base: "100%", lg: "70%" }}
               zIndex={2000}
             >
               <Image
                 src={ImageSkills.src}
-                // w="100%"
-                // h="100%"
+                loading="lazy"
                 alt="Image do Sobre de Allisson"
               />
             </Flex>
@@ -348,9 +352,10 @@ export default function Home() {
               modules={[Keyboard, Pagination, Navigation, Autoplay]}
               className="mySwiperAbout"
             >
-              {DataAboutCard.slice(0, 3).map((item, idx) => (
+              {dataCardSoftSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
+                    type="skill"
                     icon={item.icon}
                     title={item.title}
                     description={item.description}
