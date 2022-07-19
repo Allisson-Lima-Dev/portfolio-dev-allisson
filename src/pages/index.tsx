@@ -56,7 +56,7 @@ export default function Home() {
           <Flex
             w="full"
             justifyContent="space-between"
-            mt={{ base: "0px", lg: "80px" }}
+            mt={{ base: "50px", lg: "80px" }}
             flexDir={{ base: "column", lg: "row" }}
           >
             <Box
@@ -86,8 +86,8 @@ export default function Home() {
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
-                w={{ base: "150px", lg: "193px" }}
-                h="50px"
+                w={{ base: "130px", lg: "193px" }}
+                // h="50px"
                 fontSize={{ base: "17px", md: "20px" }}
                 mt="38px"
               >
@@ -104,7 +104,7 @@ export default function Home() {
         <Layout>
           <Flex>
             <Swiper
-              style={{ zIndex: 1000 }}
+              // style={{ zIndex: 1000 }}
               slidesPerView={3}
               spaceBetween={5}
               // navigation={true}
