@@ -238,7 +238,7 @@ export default function Home() {
             </Box>
             <Flex
               mt={{ base: "40px", lg: "0" }}
-              mb={{ base: "40px", lg: "0" }}
+              mb={{ base: "10px", lg: "0" }}
               justify={{ base: "left", lg: "right" }}
               w={{ base: "100%", lg: "70%" }}
               zIndex={2000}
@@ -250,47 +250,9 @@ export default function Home() {
               />
             </Flex>
           </Flex>
-          <Text fontSize={"40px"} color="#fff" mb="20px">
-            Hard Skills
+          <Text fontSize={"40px"} color="#fff" mb="-20px" mt="20px">
+            Metódos
           </Text>
-          <Flex my={{ base: "10px", lg: "80px" }}>
-            <Swiper
-              style={{ zIndex: 2000 }}
-              slidesPerView={7}
-              spaceBetween={5}
-              // navigation={true}
-              breakpoints={{
-                1024: {
-                  slidesPerView: 7,
-                  spaceBetween: 50,
-                },
-                848: {
-                  slidesPerView: 5,
-                  spaceBetween: 50,
-                },
-                200: {
-                  slidesPerView: 3,
-                  spaceBetween: 10,
-                  navigation: false,
-                },
-              }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiper"
-            >
-              {iconsDataSkill.map((item, idx) => (
-                <SwiperSlide key={idx}>
-                  <CardSkill icon={item.icon} title={item.title} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Flex>
           <Flex>
             <Swiper
               style={{ zIndex: 2000 }}
@@ -342,11 +304,87 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-          <CardCertificate
-            title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
-            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
-            icon="clarity:design-line"
-          />
+          <Text fontSize={"40px"} color="#fff" mb="20px">
+            Hard Skills
+          </Text>
+          <Flex my={{ base: "10px", lg: "80px" }}>
+            <Swiper
+              style={{ zIndex: 2000 }}
+              slidesPerView={7}
+              spaceBetween={5}
+              // navigation={true}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 7,
+                  spaceBetween: 50,
+                },
+                848: {
+                  slidesPerView: 5,
+                  spaceBetween: 50,
+                },
+                200: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
+                  navigation: false,
+                },
+              }}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              keyboard={{
+                enabled: true,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Keyboard, Pagination, Navigation, Autoplay]}
+              className="mySwiper"
+            >
+              {iconsDataSkill.map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardSkill icon={item.icon} title={item.title} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Flex>
+
+          <Flex
+            w="full"
+            justifyContent={"space-between"}
+            flexWrap="wrap"
+            gap={5}
+          >
+            <CardCertificate
+              image={
+                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+              }
+              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
+              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
+              icon="clarity:design-line"
+            />
+            <CardCertificate
+              image={
+                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+              }
+              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
+              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
+              icon="clarity:design-line"
+            />
+            <CardCertificate
+              image={
+                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+              }
+              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
+              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
+              icon="clarity:design-line"
+            />
+            <CardCertificate
+              image={
+                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+              }
+              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
+              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
+              icon="clarity:design-line"
+            />
+          </Flex>
         </Layout>
       </Flex>
     </Box>
