@@ -4,8 +4,8 @@ import {
   CardAbout,
   Header,
   Layout,
-  RowSkills,
   CardSkill,
+  CardCertificate,
 } from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
 import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
@@ -39,6 +39,7 @@ export default function Home() {
 
   return (
     <Box bg="#f8f8f8">
+      <Header />
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
@@ -52,7 +53,6 @@ export default function Home() {
           options={configParticles()}
         />
         <Layout>
-          <Header />
           <Flex
             w="full"
             justifyContent="space-between"
@@ -95,12 +95,7 @@ export default function Home() {
               </Button>
             </Box>
             <Flex zIndex={2000} align="center" justify={"center"}>
-              <Image
-                src={ImageHome.src}
-                alt="Imagem do Allisson"
-                // w="100%"
-                // h="100%"
-              />
+              <Image src={ImageHome.src} alt="Imagem do Allisson" />
             </Flex>
           </Flex>
         </Layout>
@@ -109,7 +104,7 @@ export default function Home() {
         <Layout>
           <Flex>
             <Swiper
-              style={{ zIndex: 2000 }}
+              style={{ zIndex: 1000 }}
               slidesPerView={3}
               spaceBetween={5}
               // navigation={true}
@@ -157,23 +152,6 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-          {/* <Flex
-            w="full"
-            justify={{ base: "center", lg: "space-between" }}
-            align="center"
-            // id="ct"
-            flexDir={{ base: "column", lg: "row" }}
-          >
-            {DataAboutCard.slice(0, 3).map((item, idx) => (
-              <Box key={idx} zIndex={2000} mt="100px">
-                <CardAbout
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                />
-              </Box>
-            ))}
-          </Flex> */}
           <Flex
             w="full"
             justify={"space-between"}
@@ -342,7 +320,7 @@ export default function Home() {
                   navigation: false,
                 },
               }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              autoplay={{ delay: 8000, disableOnInteraction: false }}
               keyboard={{
                 enabled: true,
               }}
@@ -364,6 +342,11 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
+          <CardCertificate
+            title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
+            icon="clarity:design-line"
+          />
         </Layout>
       </Flex>
     </Box>

@@ -1,19 +1,86 @@
 import React from "react";
-import { Flex, Text, Box } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import Router from "next/router";
+import Link from "next/link";
+import Logo from "~/assets/logo.png";
+import { Icon } from "@iconify/react";
 
 export function Header() {
+  const asPath = Router.asPath;
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef(null);
+  const routesPath = [
+    {
+      title: "Home",
+      path: "/",
+    },
+    {
+      title: "Quem somos",
+      path: "",
+    },
+    {
+      title: "Serviços",
+      path: "",
+    },
+    {
+      title: "Tecnologia",
+      path: "",
+    },
+    {
+      title: "Contato",
+      path: "",
+    },
+  ];
   return (
     <Flex
-      w="full"
+      bg="#0f0f0f73"
+      left={"50%"}
+      top={"0"}
+      transform="translate(-50%, 0)"
+      maxW="1420px"
+      mx="auto"
+      w={{ base: "95%", md: "95%", lg: "100%", xl: "85%" }}
+      pt="5px"
+      px={{ base: "10px", md: "40px", xl: "20px" }}
       color="#fff"
       justify="space-between"
       align={"center"}
-      mt="35px"
-      zIndex={1000}
+      // mt="35px"
+      // mb={{ base: "15px", lg: "0" }}
+      zIndex={2000}
+      position="fixed"
     >
-      <Text fontSize={"37px"} fontWeight="bold" color={"#6EDB5C"}>
-        Allisson
-      </Text>
+      <Flex align={"center"}>
+        <Image src={Logo.src} alt="logo" w={{ base: "30px", lg: "50px" }} />
+        <Text
+          fontSize={{ base: "20px", lg: "30px" }}
+          fontWeight="bold"
+          color={"#FFF"}
+          ml="10px"
+        >
+          ALLISSON
+        </Text>
+      </Flex>
       <Flex
         w="30%"
         justifyContent={"space-between"}
@@ -25,6 +92,48 @@ export function Header() {
         <Text>Skills</Text>
         <Text>Contato</Text>
       </Flex>
+      <Box display={{ base: "flex", lg: "none" }} zIndex={2000}>
+        <Icon icon="gg:menu" onClick={onOpen} color="#ffff" width={"30px"} />
+        {/* <HiOutlineMenuAlt2 onClick={onOpen} size={30} color="#ffff" /> */}
+      </Box>
+
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent bg={"#0f0f0f"} color="#fff" zIndex={3000}>
+          <DrawerCloseButton />
+          <DrawerHeader alignItems={"center"}>
+            <Flex align={"center"}>
+              <Image src={Logo.src} alt="Icone Logo" w="30px" />
+            </Flex>
+          </DrawerHeader>
+
+          <DrawerBody>
+            {routesPath.map((item, index) => (
+              <Flex
+                align="center"
+                // w="80%"
+                p="8px"
+                borderRadius={"5px"}
+                my="5px"
+                key={index}
+                color={item.path === asPath ? "#ffffff" : "#fff"}
+                bg={item.path === asPath ? "#6EDB5C" : "transparent"}
+              >
+                <Box ml="10px" fontSize={"18px"}>
+                  <Link href={item.path}>{item.title}</Link>
+                </Box>
+              </Flex>
+            ))}
+          </DrawerBody>
+
+          <DrawerFooter></DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </Flex>
   );
 }
