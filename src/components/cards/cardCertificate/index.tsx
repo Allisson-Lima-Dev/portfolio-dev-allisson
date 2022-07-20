@@ -17,11 +17,12 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 
-interface IPropsCard<T = string> {
-  icon: T;
+interface IPropsCard<T = string | any> {
+  icon?: T;
   title: T;
   description: T;
-  image?: T | any;
+  image?: T;
+  institution?: T;
 }
 
 export function CardCertificate({
@@ -29,6 +30,7 @@ export function CardCertificate({
   icon,
   image,
   title,
+  institution,
 }: IPropsCard) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -37,16 +39,17 @@ export function CardCertificate({
       flexDir={{ base: "column", md: "row" }}
     >
       <Box mr="5px">
-        <Icon
+        {/* <Icon
           icon={icon}
           width={"55px"}
           height={"51px"}
           color="#6EDB5C"
           // style={{ marginTop: "5px" }}
-        />
+        /> */}
+        <Image src={institution} alt="Imagem do certificado" w={"200px"} />
       </Box>
       <Box>
-        <Text color={"#6EDB5C"} fontSize="20px">
+        <Text color={"#6EDB5C"} fontSize="20px" textTransform={"uppercase"}>
           {title}
         </Text>
         <Divider color="#6EDB5C" my="5px" />
