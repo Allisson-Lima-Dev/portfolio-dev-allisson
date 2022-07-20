@@ -20,6 +20,7 @@ import {
   dataSkills,
   iconsDataSkill,
   dataCardSoftSkill,
+  dataCertificate,
 } from "~/mocks/dataSkills";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -352,38 +353,16 @@ export default function Home() {
             flexWrap="wrap"
             gap={5}
           >
-            <CardCertificate
-              image={
-                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-              }
-              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
-              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
-              icon="clarity:design-line"
-            />
-            <CardCertificate
-              image={
-                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-              }
-              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
-              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
-              icon="clarity:design-line"
-            />
-            <CardCertificate
-              image={
-                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-              }
-              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
-              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
-              icon="clarity:design-line"
-            />
-            <CardCertificate
-              image={
-                "https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-              }
-              title="REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO"
-              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus."
-              icon="clarity:design-line"
-            />
+            {dataCertificate &&
+              dataCertificate.map((item, idx) => (
+                <CardCertificate
+                  key={idx}
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                  institution={item.institution}
+                />
+              ))}
           </Flex>
         </Layout>
       </Flex>

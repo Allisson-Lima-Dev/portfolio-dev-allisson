@@ -1,3 +1,10 @@
+import Ifma from "~/assets/ifma.jpg";
+import Next from "~/assets/nextjs.jpg";
+import ReactTS from "~/assets/reactTS.jpg";
+import LogoAlura from "~/assets/alura.png";
+import LogoIfma from "~/assets/ifma.png";
+import RN from "~/assets/RN.jpg";
+
 export const dataSkills = [
   {
     skill: "TypeScript",
@@ -102,5 +109,36 @@ export const dataCardSoftSkill = [
     title: "Código Limpo",
     description:
       "Tenho como minha principal diretriz durante o desenvolvimento a qualidade do código seguindo as melhores práticas do mercado.",
+  },
+];
+
+export const dataCertificate = [
+  {
+    title: "Capacitação em Inteligência Artificial",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus.",
+    image: Ifma.src,
+    institution: LogoIfma.src,
+  },
+  {
+    title: "REACT NATIVE: CRIANDO TESTES PARA SUA APLICAÇÃO",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus.",
+    image: RN.src,
+    institution: LogoAlura.src,
+  },
+  {
+    title: "next.js: tour pelo next.js",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus.",
+    image: Next.src,
+    institution: LogoAlura.src,
+  },
+  {
+    title: "fundamentos de react: escrevendo com typescript",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel ipsa alias quidem temporibus incidunt eos similique explicabo fuga, unde voluptatem fugit enim iusto rem corporis quae? Accusamus eligendi autem voluptatibus.",
+    image: ReactTS.src,
+    institution: LogoAlura.src,
   },
 ];
