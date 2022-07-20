@@ -352,6 +352,7 @@ export default function Home() {
             justifyContent={"space-between"}
             flexWrap="wrap"
             gap={5}
+            mb="50px"
           >
             {dataCertificate &&
               dataCertificate.map((item, idx) => (

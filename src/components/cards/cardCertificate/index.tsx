@@ -46,7 +46,12 @@ export function CardCertificate({
           color="#6EDB5C"
           // style={{ marginTop: "5px" }}
         /> */}
-        <Image src={institution} alt="Imagem do certificado" w={"200px"} />
+        <Image
+          src={institution}
+          alt="Imagem do certificado"
+          w={{ base: "50px", md: "200px" }}
+          my={{ base: "10px", md: "0" }}
+        />
       </Box>
       <Box>
         <Text color={"#6EDB5C"} fontSize="20px" textTransform={"uppercase"}>
