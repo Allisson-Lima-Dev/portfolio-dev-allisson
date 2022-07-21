@@ -6,6 +6,8 @@ import {
   Layout,
   CardSkill,
   CardCertificate,
+  Swiper,
+  SwiperSlide,
 } from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
 import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
@@ -17,7 +19,6 @@ import ImageSobre from "~/assets/Sobre.png";
 import ImageSkills from "~/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
 import {
-  dataSkills,
   iconsDataSkill,
   dataCardSoftSkill,
   dataCertificate,
@@ -25,7 +26,7 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Pagination, Navigation, Autoplay } from "swiper";
 
 export default function Home() {
@@ -104,44 +105,7 @@ export default function Home() {
       <Box w="full" mb="80px" mt="-230px">
         <Layout>
           <Flex>
-            <Swiper
-              // style={{ zIndex: 1000 }}
-              slidesPerView={3}
-              spaceBetween={5}
-              // navigation={true}
-              breakpoints={{
-                1500: {
-                  slidesPerView: 3,
-                  spaceBetween: 200,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-                848: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                648: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                200: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                  navigation: false,
-                },
-              }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiperAbout"
-            >
+            <Swiper slidesPerView={3} spaceBetween={5}>
               {DataAboutCard.slice(0, 3).map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
@@ -255,44 +219,7 @@ export default function Home() {
             Metódos
           </Text>
           <Flex>
-            <Swiper
-              style={{ zIndex: 2000 }}
-              slidesPerView={3}
-              spaceBetween={5}
-              // navigation={true}
-              breakpoints={{
-                1500: {
-                  slidesPerView: 3,
-                  spaceBetween: 200,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-                848: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                648: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                200: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                  navigation: false,
-                },
-              }}
-              autoplay={{ delay: 8000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiperAbout"
-            >
+            <Swiper style={{ zIndex: 2000 }} slidesPerView={3} spaceBetween={5}>
               {dataCardSoftSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
@@ -313,7 +240,6 @@ export default function Home() {
               style={{ zIndex: 2000 }}
               slidesPerView={7}
               spaceBetween={5}
-              // navigation={true}
               breakpoints={{
                 1024: {
                   slidesPerView: 7,
@@ -329,15 +255,6 @@ export default function Home() {
                   navigation: false,
                 },
               }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiper"
             >
               {iconsDataSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
@@ -346,7 +263,6 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-
           <Flex
             w="full"
             justifyContent={"space-between"}
