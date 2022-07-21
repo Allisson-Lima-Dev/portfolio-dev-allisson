@@ -82,7 +82,7 @@ export function Header() {
         maxW="1420px"
         mx="auto"
         w={{ base: "full", md: "95%", lg: "100%", xl: "85%" }}
-        py="5px"
+        py={{ base: "10px", md: "15px" }}
         color="#fff"
         justify="space-between"
         align={"center"}
@@ -112,7 +112,7 @@ export function Header() {
           <Text>Skills</Text>
           <Text>Contato</Text>
         </Flex>
-        <Box display={{ base: "flex", lg: "none" }} zIndex={2000}>
+        <Box display={{ base: "flex", lg: "none" }} zIndex={2000} mr="10px">
           <Icon icon="gg:menu" onClick={onOpen} color="#ffff" width={"30px"} />
           {/* <HiOutlineMenuAlt2 onClick={onOpen} size={30} color="#ffff" /> */}
         </Box>

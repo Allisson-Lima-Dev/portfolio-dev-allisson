@@ -6,7 +6,8 @@ import { CardAbout } from "./cards/cardAbout";
 import { CardSkill } from "./cards/cardSkills";
 import { RowSkills } from "./rowSkills";
 import { CardCertificate } from "./cards/cardCertificate";
-import { Swiper } from "./swiper/index";
+import { Swiper } from "./swiper";
+import { Modal } from "./modal";
 
 export {
   Input,
@@ -18,4 +19,5 @@ export {
   CardCertificate,
   Swiper,
   SwiperSlide,
+  Modal
 };
