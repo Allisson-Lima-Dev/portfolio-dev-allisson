@@ -23,11 +23,6 @@ import {
   dataCardSoftSkill,
   dataCertificate,
 } from "~/mocks/dataSkills";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-// import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Pagination, Navigation, Autoplay } from "swiper";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -58,7 +53,7 @@ export default function Home() {
           <Flex
             w="full"
             justifyContent="space-between"
-            mt={{ base: "50px", lg: "80px" }}
+            mt={{ base: "70px", lg: "80px" }}
             flexDir={{ base: "column", lg: "row" }}
           >
             <Box
@@ -161,7 +156,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" zIndex={1000} color="#fff">
+      <Flex w="full" id="about" zIndex={1000} color="#fff" bg="red">
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -175,7 +170,7 @@ export default function Home() {
           <Flex
             w="full"
             justify={"space-between"}
-            h="full"
+            // h="full"
             zIndex={2000}
             flexDir={{ base: "column", lg: "row" }}
           >
@@ -232,11 +227,12 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-          <Text fontSize={"40px"} color="#fff" mb="20px">
+          <Text fontSize={"40px"} color="#fff" mb="10px">
             Hard Skills
           </Text>
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
+              className="mySwiper"
               style={{ zIndex: 2000 }}
               slidesPerView={7}
               spaceBetween={5}

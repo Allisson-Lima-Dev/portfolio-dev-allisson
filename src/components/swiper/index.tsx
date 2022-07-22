@@ -13,6 +13,7 @@ interface IPropsSwiper {
   delay?: number;
   style?: any;
   children: ReactNode;
+  className?: string;
 }
 
 export function Swiper({
@@ -23,6 +24,7 @@ export function Swiper({
   navigationView,
   spaceBetween,
   style,
+  className,
 }: IPropsSwiper) {
   return (
     <Carousel
@@ -63,7 +65,7 @@ export function Swiper({
         clickable: true,
       }}
       modules={[Keyboard, Pagination, Navigation, Autoplay]}
-      className="mySwiperAbout"
+      className={className || "mySwiperAbout"}
     >
       {children}
     </Carousel>

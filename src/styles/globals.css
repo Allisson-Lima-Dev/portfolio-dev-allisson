@@ -37,7 +37,7 @@ a {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 #name{
         white-space: nowrap;
@@ -106,10 +106,12 @@ a {
   background: #55a647; 
 }
 #about{
-  background-image:  linear-gradient(to right, #0f0f0f,  rgba(0, 0, 0, 0.932)),
+  background-color: #0f0f0f;
+  position: relative;
+  /* background-image:  linear-gradient(to right, #0f0f0f,  rgba(0, 0, 0, 0.932)),
   url("../assets/bg.jpg");
   filter: brightness(80%);
-  background-size: cover;
+  background-size: cover; */
   /* height: 100vh; */
 }
 
