@@ -330,28 +330,24 @@ export default function Home() {
             </Box>
             <Tabs variant="unstyled" w={"full"}>
               <TabList flexWrap={"wrap"} mb="20px">
-                {[
-                  "Todos",
-                  "Front End",
-                  "Mobile",
-                  "Back End",
-                  "UI/UX Desgin",
-                ].map((item, idx) => (
-                  <Tab
-                    zIndex={1000}
-                    key={idx}
-                    // borderRadius="5px"
-                    my="5px"
-                    _selected={{
-                      color: "white",
-                      borderBottom: "2px solid #6cc55d",
-                      // bg: "#6cc55d",
-                      // borderRadius: "5px",
-                    }}
-                  >
-                    {item}
-                  </Tab>
-                ))}
+                {["Front End", "Mobile", "Back End", "UI/UX Desgin"].map(
+                  (item, idx) => (
+                    <Tab
+                      zIndex={1000}
+                      key={idx}
+                      // borderRadius="5px"
+                      my="5px"
+                      _selected={{
+                        color: "white",
+                        borderBottom: "2px solid #6cc55d",
+                        // bg: "#6cc55d",
+                        // borderRadius: "5px",
+                      }}
+                    >
+                      {item}
+                    </Tab>
+                  )
+                )}
               </TabList>
               <TabPanels w="full">
                 <TabPanel>
