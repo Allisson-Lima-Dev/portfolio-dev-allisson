@@ -50,7 +50,7 @@ export function CardCertificate({
             mt="10px"
             color={"#fff"}
             onClick={onOpen}
-            zIndex={2000}
+            zIndex={1000}
           >
             Certificado
           </Button>
