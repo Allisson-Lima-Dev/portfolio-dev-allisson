@@ -1,11 +1,25 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Text,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 import {
   CardAbout,
   Header,
   Layout,
-  RowSkills,
   CardSkill,
+  CardCertificate,
+  Swiper,
+  SwiperSlide,
 } from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
 import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
@@ -16,12 +30,11 @@ import ImageHome from "~/assets/home.png";
 import ImageSobre from "~/assets/Sobre.png";
 import ImageSkills from "~/assets/imgSkills.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
-import { dataSkills, iconsDataSkill } from "~/mocks/dataSkills";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Pagination, Navigation, Autoplay } from "swiper";
+import {
+  iconsDataSkill,
+  dataCardSoftSkill,
+  dataCertificate,
+} from "~/mocks/dataSkills";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -35,6 +48,7 @@ export default function Home() {
 
   return (
     <Box bg="#f8f8f8">
+      <Header />
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
@@ -48,11 +62,10 @@ export default function Home() {
           options={configParticles()}
         />
         <Layout>
-          <Header />
           <Flex
             w="full"
             justifyContent="space-between"
-            mt={{ base: "0px", lg: "80px" }}
+            mt={{ base: "70px", lg: "80px" }}
             flexDir={{ base: "column", lg: "row" }}
           >
             <Box
@@ -82,8 +95,8 @@ export default function Home() {
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
-                w={{ base: "150px", lg: "193px" }}
-                h="50px"
+                w={{ base: "130px", lg: "193px" }}
+                // h="50px"
                 fontSize={{ base: "17px", md: "20px" }}
                 mt="38px"
               >
@@ -91,12 +104,7 @@ export default function Home() {
               </Button>
             </Box>
             <Flex zIndex={2000} align="center" justify={"center"}>
-              <Image
-                src={ImageHome.src}
-                alt="Imagem do Allisson"
-                // w="100%"
-                // h="100%"
-              />
+              <Image src={ImageHome.src} alt="Imagem do Allisson" />
             </Flex>
           </Flex>
         </Layout>
@@ -104,44 +112,7 @@ export default function Home() {
       <Box w="full" mb="80px" mt="-230px">
         <Layout>
           <Flex>
-            <Swiper
-              style={{ zIndex: 2000 }}
-              slidesPerView={3}
-              spaceBetween={5}
-              // navigation={true}
-              breakpoints={{
-                1500: {
-                  slidesPerView: 3,
-                  spaceBetween: 200,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-                848: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                648: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                200: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                  navigation: false,
-                },
-              }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiperAbout"
-            >
+            <Swiper slidesPerView={3} spaceBetween={5}>
               {DataAboutCard.slice(0, 3).map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
@@ -153,23 +124,6 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-          {/* <Flex
-            w="full"
-            justify={{ base: "center", lg: "space-between" }}
-            align="center"
-            // id="ct"
-            flexDir={{ base: "column", lg: "row" }}
-          >
-            {DataAboutCard.slice(0, 3).map((item, idx) => (
-              <Box key={idx} zIndex={2000} mt="100px">
-                <CardAbout
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                />
-              </Box>
-            ))}
-          </Flex> */}
           <Flex
             w="full"
             justify={"space-between"}
@@ -214,7 +168,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" zIndex={1000} color="#fff">
+      <Flex w="full" id="about" color="#fff" bg="red">
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -228,11 +182,11 @@ export default function Home() {
           <Flex
             w="full"
             justify={"space-between"}
-            h="full"
-            zIndex={2000}
+            // h="full"
+            zIndex={1000}
             flexDir={{ base: "column", lg: "row" }}
           >
-            <Box w={{ base: "100%", lg: "50%" }} zIndex={2000}>
+            <Box w={{ base: "100%", lg: "50%" }} zIndex={1000}>
               <Text fontSize={"19px"}>
                 Durante minha caminhada aprendi habilidades de Soft Skill, uma
                 que destaco como principal a{" "}
@@ -256,27 +210,44 @@ export default function Home() {
             </Box>
             <Flex
               mt={{ base: "40px", lg: "0" }}
-              justify={"right"}
+              mb={{ base: "10px", lg: "0" }}
+              justify={{ base: "left", lg: "right" }}
               w={{ base: "100%", lg: "70%" }}
-              zIndex={2000}
+              zIndex={1000}
             >
               <Image
                 src={ImageSkills.src}
-                // w="100%"
-                // h="100%"
+                loading="lazy"
                 alt="Image do Sobre de Allisson"
               />
             </Flex>
           </Flex>
-          <Text fontSize={"40px"} color="#fff" mb="20px">
+          <Text fontSize={"40px"} color="#fff" mb="-20px" mt="20px">
+            Metódos
+          </Text>
+          <Flex>
+            <Swiper style={{ zIndex: 1000 }} slidesPerView={3} spaceBetween={5}>
+              {dataCardSoftSkill.map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardAbout
+                    type="skill"
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Flex>
+          <Text fontSize={"40px"} color="#fff" mb="10px">
             Hard Skills
           </Text>
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
-              style={{ zIndex: 2000 }}
+              className="mySwiper"
+              style={{ zIndex: 1000 }}
               slidesPerView={7}
               spaceBetween={5}
-              // navigation={true}
               breakpoints={{
                 1024: {
                   slidesPerView: 7,
@@ -292,15 +263,6 @@ export default function Home() {
                   navigation: false,
                 },
               }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiper"
             >
               {iconsDataSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
@@ -309,55 +271,72 @@ export default function Home() {
               ))}
             </Swiper>
           </Flex>
-          <Flex>
-            <Swiper
-              style={{ zIndex: 2000 }}
-              slidesPerView={3}
-              spaceBetween={5}
-              // navigation={true}
-              breakpoints={{
-                1500: {
-                  slidesPerView: 3,
-                  spaceBetween: 200,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-                848: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                648: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                200: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                  navigation: false,
-                },
-              }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              keyboard={{
-                enabled: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Keyboard, Pagination, Navigation, Autoplay]}
-              className="mySwiperAbout"
-            >
-              {DataAboutCard.slice(0, 3).map((item, idx) => (
-                <SwiperSlide key={idx}>
-                  <CardAbout
-                    icon={item.icon}
-                    title={item.title}
-                    description={item.description}
-                  />
-                </SwiperSlide>
+          <Flex
+            w="full"
+            justifyContent={"space-between"}
+            flexWrap="wrap"
+            gap={5}
+            mb="50px"
+          >
+            {dataCertificate &&
+              dataCertificate.map((item, idx) => (
+                <CardCertificate
+                  key={idx}
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                  institution={item.institution}
+                />
               ))}
-            </Swiper>
+          </Flex>
+          <Flex
+            w="full"
+            // justifyContent={"space-between"}
+            flexWrap="wrap"
+            gap={5}
+            mb="50px"
+          >
+            <Box>
+              <Text fontSize={"40px"} color="#fff" mt="10px">
+                Projetos
+              </Text>
+              <Text>
+                Para saber mais a respeito dos projetos abaixo clique em "Mais
+                Detalhes" para visualizar o repositório do Projeto.
+              </Text>
+            </Box>
+            <Tabs zIndex={1000} variant="unstyled" w={"full"}>
+              <TabList flexWrap={"wrap"}>
+                {[
+                  "Todos",
+                  "Front End",
+                  "Mobile",
+                  "Back End",
+                  "UI/UX Desgin",
+                ].map((item, idx) => (
+                  <Tab
+                    key={idx}
+                    borderRadius="5px"
+                    my="5px"
+                    _selected={{
+                      color: "white",
+                      bg: "#6cc55d",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {item}
+                  </Tab>
+                ))}
+              </TabList>
+              <TabPanels h={"500px"} w="full">
+                <TabPanel>
+                  <p>one!</p>
+                </TabPanel>
+                <TabPanel>
+                  <p>two!</p>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </Flex>
         </Layout>
       </Flex>
