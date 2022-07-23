@@ -26,7 +26,7 @@ export function CardProject() {
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio nulla
           cupiditate, ullam perferendis voluptatem unde iure quia.
         </Text>
-        <Button bg="#6EDB5C" mt="10px" color={"#fff"} zIndex={1000}>
+        <Button bg="#6EDB5C" mt="10px" color={"#fff"}>
           Acessar
         </Button>
       </Box>
