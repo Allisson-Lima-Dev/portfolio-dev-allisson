@@ -11,6 +11,7 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import {
   CardAbout,
@@ -20,6 +21,7 @@ import {
   CardCertificate,
   Swiper,
   SwiperSlide,
+  CardProject,
 } from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
 import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
@@ -328,9 +330,18 @@ export default function Home() {
                   </Tab>
                 ))}
               </TabList>
-              <TabPanels h={"500px"} w="full">
+              <TabPanels w="full">
                 <TabPanel>
-                  <p>one!</p>
+                  <SimpleGrid
+                    spacing="40px"
+                    columns={{ base: 1, md: 2, lg: 3 }}
+                    placeItems="center"
+                  >
+                    <CardProject />
+                    <CardProject />
+                    <CardProject />
+                    <CardProject />
+                  </SimpleGrid>
                 </TabPanel>
                 <TabPanel>
                   <p>two!</p>

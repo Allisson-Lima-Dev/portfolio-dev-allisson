@@ -8,6 +8,7 @@ import { RowSkills } from "./rowSkills";
 import { CardCertificate } from "./cards/cardCertificate";
 import { Swiper } from "./swiper";
 import { Modal } from "./modal";
+import { CardProject } from "./cards/cardProject";
 
 export {
   Input,
@@ -19,5 +20,6 @@ export {
   CardCertificate,
   Swiper,
   SwiperSlide,
-  Modal
+  Modal,
+  CardProject,
 };
