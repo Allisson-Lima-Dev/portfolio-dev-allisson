@@ -1,5 +1,17 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Text,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 import {
   CardAbout,
   Header,
@@ -156,7 +168,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" zIndex={1000} color="#fff" bg="red">
+      <Flex w="full" id="about" color="#fff" bg="red">
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -171,10 +183,10 @@ export default function Home() {
             w="full"
             justify={"space-between"}
             // h="full"
-            zIndex={2000}
+            zIndex={1000}
             flexDir={{ base: "column", lg: "row" }}
           >
-            <Box w={{ base: "100%", lg: "50%" }} zIndex={2000}>
+            <Box w={{ base: "100%", lg: "50%" }} zIndex={1000}>
               <Text fontSize={"19px"}>
                 Durante minha caminhada aprendi habilidades de Soft Skill, uma
                 que destaco como principal a{" "}
@@ -201,7 +213,7 @@ export default function Home() {
               mb={{ base: "10px", lg: "0" }}
               justify={{ base: "left", lg: "right" }}
               w={{ base: "100%", lg: "70%" }}
-              zIndex={2000}
+              zIndex={1000}
             >
               <Image
                 src={ImageSkills.src}
@@ -214,7 +226,7 @@ export default function Home() {
             Metódos
           </Text>
           <Flex>
-            <Swiper style={{ zIndex: 2000 }} slidesPerView={3} spaceBetween={5}>
+            <Swiper style={{ zIndex: 1000 }} slidesPerView={3} spaceBetween={5}>
               {dataCardSoftSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
@@ -233,7 +245,7 @@ export default function Home() {
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
               className="mySwiper"
-              style={{ zIndex: 2000 }}
+              style={{ zIndex: 1000 }}
               slidesPerView={7}
               spaceBetween={5}
               breakpoints={{
@@ -276,6 +288,55 @@ export default function Home() {
                   institution={item.institution}
                 />
               ))}
+          </Flex>
+          <Flex
+            w="full"
+            // justifyContent={"space-between"}
+            flexWrap="wrap"
+            gap={5}
+            mb="50px"
+          >
+            <Box>
+              <Text fontSize={"40px"} color="#fff" mt="10px">
+                Projetos
+              </Text>
+              <Text>
+                Para saber mais a respeito dos projetos abaixo clique em "Mais
+                Detalhes" para visualizar o repositório do Projeto.
+              </Text>
+            </Box>
+            <Tabs zIndex={1000} variant="unstyled" w={"full"}>
+              <TabList flexWrap={"wrap"}>
+                {[
+                  "Todos",
+                  "Front End",
+                  "Mobile",
+                  "Back End",
+                  "UI/UX Desgin",
+                ].map((item, idx) => (
+                  <Tab
+                    key={idx}
+                    borderRadius="5px"
+                    my="5px"
+                    _selected={{
+                      color: "white",
+                      bg: "#6cc55d",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {item}
+                  </Tab>
+                ))}
+              </TabList>
+              <TabPanels h={"500px"} w="full">
+                <TabPanel>
+                  <p>one!</p>
+                </TabPanel>
+                <TabPanel>
+                  <p>two!</p>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </Flex>
         </Layout>
       </Flex>

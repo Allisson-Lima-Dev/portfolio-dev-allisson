@@ -69,7 +69,7 @@ export function Header() {
   return (
     <Flex
       display={hide}
-      zIndex={1000}
+      zIndex={isOpen ? 1000 : 2000}
       position="fixed"
       bg="#0f0f0f73"
       left={"50%"}
