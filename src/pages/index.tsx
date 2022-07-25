@@ -351,16 +351,42 @@ export default function Home() {
               </TabList>
               <TabPanels w="full">
                 <TabPanel>
-                  <SimpleGrid
-                    spacing="40px"
-                    columns={{ base: 1, md: 2, lg: 3 }}
-                    placeItems="center"
+                  <Swiper
+                    className="mySwiperProject"
+                    // style={{ zIndex: 1000 }}
+                    slidesPerView={3}
                   >
-                    <CardProject />
-                    <CardProject />
-                    <CardProject />
-                    <CardProject />
-                  </SimpleGrid>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <CardProject />
+                    </SwiperSlide>
+                  </Swiper>
                 </TabPanel>
                 <TabPanel>
                   <p>two!</p>
