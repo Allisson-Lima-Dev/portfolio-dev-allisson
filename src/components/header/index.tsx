@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -25,10 +25,14 @@ import Link from "next/link";
 import Logo from "~/assets/logo.png";
 import { Icon } from "@iconify/react";
 
-export function Header() {
+interface IPropsHeader {
+  sectionMenu?: number;
+}
+
+export function Header({ sectionMenu }: IPropsHeader) {
   const asPath = Router.asPath;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef(null);
+  const btnRef = useRef(null);
   const routesPath = [
     {
       title: "Home",
@@ -53,6 +57,7 @@ export function Header() {
   ];
 
   const [hide, setHide] = useState<string>("flex");
+  const [active, setActive] = useState(false);
   useEffect(() => {
     let lastScrollTop = 0;
     window.addEventListener(
@@ -66,6 +71,7 @@ export function Header() {
     );
   }, []);
 
+  const menu = ["Home", "Sobre", "Skills", "Projetos", "Contact"];
   return (
     <Flex
       display={hide}
@@ -83,7 +89,7 @@ export function Header() {
         mx="auto"
         w={{ base: "full", md: "95%", lg: "100%", xl: "85%" }}
         py={{ base: "10px", md: "15px" }}
-        color="#fff"
+        // color="#fff"
         justify="space-between"
         align={"center"}
         px={{ base: "10px", md: "40px", xl: "20px" }}
@@ -102,15 +108,18 @@ export function Header() {
           </Text>
         </Flex>
         <Flex
-          w="30%"
+          w="35%"
           justifyContent={"space-between"}
           fontSize="20px"
           display={{ base: "none", lg: "flex" }}
         >
-          <Text>Home</Text>
-          <Text>Sobre</Text>
-          <Text>Skills</Text>
-          <Text>Contato</Text>
+          {menu.map((item, idx) => (
+            <Link key={item} href={"#project"}>
+              <Text color={sectionMenu === idx ? "#d41e1e" : "#fff"} w="full">
+                {item}
+              </Text>
+            </Link>
+          ))}
         </Flex>
         <Box display={{ base: "flex", lg: "none" }} zIndex={2000} mr="10px">
           <Icon icon="gg:menu" onClick={onOpen} color="#ffff" width={"30px"} />
@@ -145,7 +154,7 @@ export function Header() {
                   bg={item.path === asPath ? "#6EDB5C" : "transparent"}
                 >
                   <Box ml="10px" fontSize={"18px"}>
-                    <Link href={item.path}>{item.title}</Link>
+                    <Link href={"#project"}>{item.title}</Link>
                   </Box>
                 </Flex>
               ))}

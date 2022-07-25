@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -54,6 +54,37 @@ export default function Home() {
     // console.log(container);
   };
 
+  const sectionHome = useRef<any>(null);
+  const sectionT = useRef<any>(null);
+  const sectionProject = useRef<any>(null);
+  const sectionSkill = useRef<any>(null);
+  const sectionContact = useRef<any>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    let lastScrollTop = 0;
+    window.addEventListener(
+      "scroll",
+      function () {
+        setActive(
+          scrollY === 0
+            ? 0
+            : sectionT?.current?.offsetTop > scrollY
+            ? 1
+            : sectionSkill?.current?.offsetTop > scrollY
+            ? 2
+            : scrollY > sectionProject?.current?.offsetTop
+            ? 3
+            : sectionContact?.current?.offsetTop > scrollY
+            ? 4
+            : 4
+        );
+        console.log(sectionProject.current?.offsetHeight, active);
+      },
+      true
+    );
+  }, [active]);
+
   return (
     <Box bg="#f8f8f8">
       <Link href="https://wa.me/+5598999682402?text=Olá+Allisson,+gostei+do+seu+Portfólio!+Gostaria+de+saber+mais+sobre+você!&app_absent=0">
@@ -68,12 +99,13 @@ export default function Home() {
           cursor="pointer"
         />
       </Link>
-      <Header />
+      <Header sectionMenu={active} />
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
         id="container-home"
         zIndex={1000}
+        ref={sectionHome}
       >
         <Particles
           id="tsparticles"
@@ -129,7 +161,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px" mt="-230px">
+      <Box w="full" mb="80px" mt="-230px" ref={sectionT}>
         <Layout>
           <Flex>
             <Swiper slidesPerView={3} spaceBetween={5}>
@@ -149,6 +181,7 @@ export default function Home() {
             justify={"space-between"}
             mt="50px"
             flexDir={{ base: "column", lg: "row" }}
+            id={"1"}
           >
             <Box>
               <Image
@@ -159,7 +192,7 @@ export default function Home() {
               />
             </Box>
             <Box w={{ base: "100%", lg: "50%" }}>
-              <Text fontSize={"40px"} color="#6EDB5C">
+              <Text fontSize={"40px"} color={"#6EDB5C"}>
                 Sobre
               </Text>
               <Text fontSize={"19px"}>
@@ -188,7 +221,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" color="#fff" bg="red">
+      <Flex w="full" id="about" color="#fff" ref={sectionSkill}>
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -196,7 +229,7 @@ export default function Home() {
           options={configParticlesSkills()}
         />
         <Layout>
-          <Text fontSize={"40px"} color="#fff" mb="20px" mt="80px">
+          <Text fontSize={"40px"} color={"#fff"} mb="20px" mt="80px">
             Minhas Habilidades
           </Text>
           <Flex
@@ -295,6 +328,7 @@ export default function Home() {
             </Swiper>
           </Flex>
           <Flex
+            ref={sectionSkill}
             w="full"
             justifyContent={"space-between"}
             flexWrap="wrap"
@@ -318,8 +352,9 @@ export default function Home() {
             flexWrap="wrap"
             gap={5}
             mb="50px"
+            ref={sectionProject}
           >
-            <Box>
+            <Box id="project">
               <Text fontSize={"40px"} color="#fff" mt="10px">
                 Projetos
               </Text>
@@ -356,45 +391,30 @@ export default function Home() {
                     // style={{ zIndex: 1000 }}
                     slidesPerView={3}
                   >
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CardProject />
-                    </SwiperSlide>
+                    {Array.from({ length: 10 }).map((_, idx) => (
+                      <SwiperSlide key={idx}>
+                        <CardProject />
+                      </SwiperSlide>
+                    ))}
                   </Swiper>
                 </TabPanel>
                 <TabPanel>
-                  <p>two!</p>
+                  <Swiper
+                    className="mySwiperProject"
+                    // style={{ zIndex: 1000 }}
+                    slidesPerView={3}
+                  >
+                    {Array.from({ length: 10 }).map((_, idx) => (
+                      <SwiperSlide key={idx}>
+                        <CardProject />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Flex>
-          <Flex justify={"center"} mb="50px">
+          <Flex justify={"center"} mb="50px" ref={sectionContact}>
             <Box>
               <Text fontSize={"40px"} color="#fff" my="10px">
                 Entre em Contato
@@ -425,7 +445,6 @@ export default function Home() {
                 Enviar
               </Button>
             </Box>
-            {/* <Image src={Contact.src} alt="image de contato" /> */}
           </Flex>
         </Layout>
       </Flex>
