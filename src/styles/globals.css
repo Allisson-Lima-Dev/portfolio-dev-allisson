@@ -16,7 +16,7 @@ a {
   box-sizing: border-box;
 }
 
-#container-home{
+#home{
   /* height: 100vh; */
   /* position: relative; */
   clip-path: 
@@ -106,7 +106,7 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #55a647; 
 }
-#about{
+#skill{
   background-color: #0f0f0f;
   position: relative;
   /* z-index: 1000; */

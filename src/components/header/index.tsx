@@ -26,38 +26,37 @@ import Logo from "~/assets/logo.png";
 import { Icon } from "@iconify/react";
 
 interface IPropsHeader {
-  sectionMenu?: number;
+  activeSection?: number;
 }
 
-export function Header({ sectionMenu }: IPropsHeader) {
+export function Header({ activeSection }: IPropsHeader) {
   const asPath = Router.asPath;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
   const routesPath = [
     {
       title: "Home",
-      path: "/",
+      path: "#home",
     },
     {
-      title: "Quem somos",
-      path: "",
+      title: "Sobre",
+      path: "#about",
     },
     {
-      title: "Serviços",
-      path: "",
+      title: "Skills",
+      path: "#skill",
     },
     {
-      title: "Tecnologia",
-      path: "",
+      title: "Projetos",
+      path: "#project",
     },
     {
       title: "Contato",
-      path: "",
+      path: "#contact",
     },
   ];
 
   const [hide, setHide] = useState<string>("flex");
-  const [active, setActive] = useState(false);
   useEffect(() => {
     let lastScrollTop = 0;
     window.addEventListener(
@@ -71,7 +70,6 @@ export function Header({ sectionMenu }: IPropsHeader) {
     );
   }, []);
 
-  const menu = ["Home", "Sobre", "Skills", "Projetos", "Contact"];
   return (
     <Flex
       display={hide}
@@ -113,12 +111,26 @@ export function Header({ sectionMenu }: IPropsHeader) {
           fontSize="20px"
           display={{ base: "none", lg: "flex" }}
         >
-          {menu.map((item, idx) => (
-            <Link key={item} href={"#project"}>
-              <Text color={sectionMenu === idx ? "#d41e1e" : "#fff"} w="full">
-                {item}
-              </Text>
-            </Link>
+          {routesPath.map((item, idx) => (
+            <Box key={idx} cursor="pointer">
+              <Link href={item.path}>
+                <Text
+                  color={activeSection === idx ? "#6EDB5C" : "#fff"}
+                  w="full"
+                >
+                  {item.title}
+                </Text>
+              </Link>
+              {activeSection === idx && (
+                <Box
+                  h="2.5px"
+                  borderRadius={"5px"}
+                  w="70%"
+                  bg="#fff"
+                  mt="5px"
+                />
+              )}
+            </Box>
           ))}
         </Flex>
         <Box display={{ base: "flex", lg: "none" }} zIndex={2000} mr="10px">
@@ -150,11 +162,11 @@ export function Header({ sectionMenu }: IPropsHeader) {
                   borderRadius={"5px"}
                   my="5px"
                   key={index}
-                  color={item.path === asPath ? "#ffffff" : "#fff"}
-                  bg={item.path === asPath ? "#6EDB5C" : "transparent"}
+                  color={activeSection === index ? "#ffffff" : "#fff"}
+                  bg={activeSection === index ? "#6EDB5C" : "transparent"}
                 >
-                  <Box ml="10px" fontSize={"18px"}>
-                    <Link href={"#project"}>{item.title}</Link>
+                  <Box ml="10px" fontSize={"18px"} onClick={onClose}>
+                    <a href={item.path}>{item.title}</a>
                   </Box>
                 </Flex>
               ))}

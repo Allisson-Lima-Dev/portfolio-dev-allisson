@@ -43,6 +43,7 @@ import {
   dataCertificate,
 } from "~/mocks/dataSkills";
 import Link from "next/link";
+import useScrollSpy from "react-use-scrollspy";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -53,37 +54,18 @@ export default function Home() {
   const particlesLoaded = async (container: Container | undefined) => {
     // console.log(container);
   };
+  const sectionRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
 
-  const sectionHome = useRef<any>(null);
-  const sectionT = useRef<any>(null);
-  const sectionProject = useRef<any>(null);
-  const sectionSkill = useRef<any>(null);
-  const sectionContact = useRef<any>(null);
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    let lastScrollTop = 0;
-    window.addEventListener(
-      "scroll",
-      function () {
-        setActive(
-          scrollY === 0
-            ? 0
-            : sectionT?.current?.offsetTop > scrollY
-            ? 1
-            : sectionSkill?.current?.offsetTop > scrollY
-            ? 2
-            : scrollY > sectionProject?.current?.offsetTop
-            ? 3
-            : sectionContact?.current?.offsetTop > scrollY
-            ? 4
-            : 4
-        );
-        console.log(sectionProject.current?.offsetHeight, active);
-      },
-      true
-    );
-  }, [active]);
+  const activeSection = useScrollSpy({
+    sectionElementRefs: sectionRefs,
+    offsetPx: -80,
+  });
 
   return (
     <Box bg="#f8f8f8">
@@ -99,13 +81,13 @@ export default function Home() {
           cursor="pointer"
         />
       </Link>
-      <Header sectionMenu={active} />
+      <Header activeSection={activeSection} />
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
-        id="container-home"
+        id="home"
         zIndex={1000}
-        ref={sectionHome}
+        ref={sectionRefs[0]}
       >
         <Particles
           id="tsparticles"
@@ -161,7 +143,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px" mt="-230px" ref={sectionT}>
+      <Box w="full" mb="80px" mt="-230px" ref={sectionRefs[1]} id="about">
         <Layout>
           <Flex>
             <Swiper slidesPerView={3} spaceBetween={5}>
@@ -221,7 +203,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" color="#fff" ref={sectionSkill}>
+      <Flex w="full" id="skill" color="#fff">
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -233,6 +215,7 @@ export default function Home() {
             Minhas Habilidades
           </Text>
           <Flex
+            ref={sectionRefs[2]}
             w="full"
             justify={"space-between"}
             // h="full"
@@ -328,7 +311,6 @@ export default function Home() {
             </Swiper>
           </Flex>
           <Flex
-            ref={sectionSkill}
             w="full"
             justifyContent={"space-between"}
             flexWrap="wrap"
@@ -352,7 +334,7 @@ export default function Home() {
             flexWrap="wrap"
             gap={5}
             mb="50px"
-            ref={sectionProject}
+            ref={sectionRefs[3]}
           >
             <Box id="project">
               <Text fontSize={"40px"} color="#fff" mt="10px">
@@ -414,7 +396,7 @@ export default function Home() {
               </TabPanels>
             </Tabs>
           </Flex>
-          <Flex justify={"center"} mb="50px" ref={sectionContact}>
+          <Flex justify={"center"} mb="50px">
             <Box>
               <Text fontSize={"40px"} color="#fff" my="10px">
                 Entre em Contato
