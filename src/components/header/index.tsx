@@ -56,14 +56,14 @@ export function Header({ activeSection }: IPropsHeader) {
     },
   ];
 
-  const [hide, setHide] = useState<string>("flex");
+  const [hide, setHide] = useState<string>("fixed");
   useEffect(() => {
     let lastScrollTop = 0;
     window.addEventListener(
       "scroll",
       function () {
         if (scrollY === lastScrollTop) return;
-        setHide(scrollY < lastScrollTop ? "flex" : "none");
+        setHide(scrollY < lastScrollTop ? "fixed" : "absolute");
         lastScrollTop = scrollY;
       },
       true
@@ -72,9 +72,9 @@ export function Header({ activeSection }: IPropsHeader) {
 
   return (
     <Flex
-      display={hide}
+      // display={hide}
       zIndex={isOpen ? 1000 : 2000}
-      position="fixed"
+      position={hide}
       bg="#0f0f0f73"
       left={"50%"}
       top={"0"}
