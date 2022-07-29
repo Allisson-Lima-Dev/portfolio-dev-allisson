@@ -56,19 +56,21 @@ export function Header({ activeSection }: IPropsHeader) {
     },
   ];
 
-  const [hide, setHide] = useState<string>("fixed");
+  const [hide, setHide] = useState<"fixed" | "absolute">("fixed");
+  const [activeMenu, setActiveMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = 0;
     window.addEventListener(
       "scroll",
       function () {
-        if (scrollY === lastScrollTop) return;
+        if (scrollY === lastScrollTop) return setHide("fixed");
         setHide(scrollY < lastScrollTop ? "fixed" : "absolute");
         lastScrollTop = scrollY;
       },
       true
     );
   }, []);
+  console.log(activeMenu);
 
   return (
     <Flex
@@ -165,7 +167,15 @@ export function Header({ activeSection }: IPropsHeader) {
                   color={activeSection === index ? "#ffffff" : "#fff"}
                   bg={activeSection === index ? "#6EDB5C" : "transparent"}
                 >
-                  <Box ml="10px" fontSize={"18px"} onClick={onClose}>
+                  <Box
+                    ml="10px"
+                    fontSize={"18px"}
+                    onClick={() => {
+                      setActiveMenu(true);
+                      onClose();
+                      setHide("fixed");
+                    }}
+                  >
                     <a href={item.path}>{item.title}</a>
                   </Box>
                 </Flex>

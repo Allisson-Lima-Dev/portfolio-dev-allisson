@@ -44,6 +44,7 @@ import {
 } from "~/mocks/dataSkills";
 import Link from "next/link";
 import useScrollSpy from "react-use-scrollspy";
+import { Icon } from "@iconify/react";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -67,8 +68,38 @@ export default function Home() {
     offsetPx: -80,
   });
 
+  const [view, setView] = useState(false);
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (window.scrollY > 170) {
+        setView(true);
+      } else {
+        setView(false);
+      }
+    });
+  }, []);
+
   return (
     <Box bg="#f8f8f8">
+      {view && (
+        <Box
+          pos="fixed"
+          right={{ base: "2.5", md: "4" }}
+          bottom={{ base: "60px", md: "80px" }}
+          zIndex="1000"
+          cursor="pointer"
+          color={"#6EDB5C"}
+          bg="#fff"
+          borderRadius={"50%"}
+          p={{ base: "6px", md: "5px" }}
+        >
+          <Icon
+            width={"25px"}
+            icon="bytesize:chevron-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
+        </Box>
+      )}
       <Link href="https://wa.me/+5598999682402?text=Olá+Allisson,+gostei+do+seu+Portfólio!+Gostaria+de+saber+mais+sobre+você!&app_absent=0">
         <Image
           src={Whatssap.src}
