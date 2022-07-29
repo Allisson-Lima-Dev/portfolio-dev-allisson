@@ -157,6 +157,37 @@ export default function Home() {
                 <span style={{ color: "#6EDB5C" }}>front end</span> e atualmente
                 estudando UI/UX Designer.
               </Text>
+              <Flex mt="15px">
+                <Flex
+                  bg="#6EDB5C"
+                  h="40px"
+                  w="40px"
+                  borderRadius={"5px"}
+                  align={"center"}
+                  justify="center"
+                  mr="10px"
+                >
+                  <Icon
+                    width={"25px"}
+                    icon="akar-icons:linkedin-fill"
+                    color="#fff"
+                  />
+                </Flex>
+                <Flex
+                  bg="#6EDB5C"
+                  h="40px"
+                  w="40px"
+                  borderRadius={"5px"}
+                  align={"center"}
+                  justify="center"
+                >
+                  <Icon
+                    width={"25px"}
+                    icon="akar-icons:github-fill"
+                    color="#fff"
+                  />
+                </Flex>
+              </Flex>
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
