@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -25,52 +25,58 @@ import Link from "next/link";
 import Logo from "~/assets/logo.png";
 import { Icon } from "@iconify/react";
 
-export function Header() {
+interface IPropsHeader {
+  activeSection?: number;
+}
+
+export function Header({ activeSection }: IPropsHeader) {
   const asPath = Router.asPath;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef(null);
+  const btnRef = useRef(null);
   const routesPath = [
     {
       title: "Home",
-      path: "/",
+      path: "#home",
     },
     {
-      title: "Quem somos",
-      path: "",
+      title: "Sobre",
+      path: "#about",
     },
     {
-      title: "Serviços",
-      path: "",
+      title: "Skills",
+      path: "#skill",
     },
     {
-      title: "Tecnologia",
-      path: "",
+      title: "Projetos",
+      path: "#project",
     },
     {
       title: "Contato",
-      path: "",
+      path: "#contact",
     },
   ];
 
-  const [hide, setHide] = useState<string>("flex");
+  const [hide, setHide] = useState<"fixed" | "absolute">("fixed");
+  const [activeMenu, setActiveMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = 0;
     window.addEventListener(
       "scroll",
       function () {
-        if (scrollY === lastScrollTop) return;
-        setHide(scrollY < lastScrollTop ? "flex" : "none");
+        if (scrollY === lastScrollTop) return setHide("fixed");
+        setHide(scrollY < lastScrollTop ? "fixed" : "absolute");
         lastScrollTop = scrollY;
       },
       true
     );
   }, []);
+  console.log(activeMenu);
 
   return (
     <Flex
-      display={hide}
+      // display={hide}
       zIndex={isOpen ? 1000 : 2000}
-      position="fixed"
+      position={hide}
       bg="#0f0f0f73"
       left={"50%"}
       top={"0"}
@@ -83,7 +89,7 @@ export function Header() {
         mx="auto"
         w={{ base: "full", md: "95%", lg: "100%", xl: "85%" }}
         py={{ base: "10px", md: "15px" }}
-        color="#fff"
+        // color="#fff"
         justify="space-between"
         align={"center"}
         px={{ base: "10px", md: "40px", xl: "20px" }}
@@ -102,15 +108,32 @@ export function Header() {
           </Text>
         </Flex>
         <Flex
-          w="30%"
+          w="35%"
           justifyContent={"space-between"}
           fontSize="20px"
           display={{ base: "none", lg: "flex" }}
         >
-          <Text>Home</Text>
-          <Text>Sobre</Text>
-          <Text>Skills</Text>
-          <Text>Contato</Text>
+          {routesPath.map((item, idx) => (
+            <Box key={idx} cursor="pointer">
+              <Link href={item.path}>
+                <Text
+                  color={activeSection === idx ? "#6EDB5C" : "#fff"}
+                  w="full"
+                >
+                  {item.title}
+                </Text>
+              </Link>
+              {activeSection === idx && (
+                <Box
+                  h="2.5px"
+                  borderRadius={"5px"}
+                  w="70%"
+                  bg="#fff"
+                  mt="5px"
+                />
+              )}
+            </Box>
+          ))}
         </Flex>
         <Box display={{ base: "flex", lg: "none" }} zIndex={2000} mr="10px">
           <Icon icon="gg:menu" onClick={onOpen} color="#ffff" width={"30px"} />
@@ -141,11 +164,19 @@ export function Header() {
                   borderRadius={"5px"}
                   my="5px"
                   key={index}
-                  color={item.path === asPath ? "#ffffff" : "#fff"}
-                  bg={item.path === asPath ? "#6EDB5C" : "transparent"}
+                  color={activeSection === index ? "#ffffff" : "#fff"}
+                  bg={activeSection === index ? "#6EDB5C" : "transparent"}
                 >
-                  <Box ml="10px" fontSize={"18px"}>
-                    <Link href={item.path}>{item.title}</Link>
+                  <Box
+                    ml="10px"
+                    fontSize={"18px"}
+                    onClick={() => {
+                      setActiveMenu(true);
+                      onClose();
+                      setHide("fixed");
+                    }}
+                  >
+                    <a href={item.path}>{item.title}</a>
                   </Box>
                 </Flex>
               ))}

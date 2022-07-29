@@ -55,7 +55,7 @@ export function Particles() {
           // enable: true,
           area: 800,
         },
-        value: !Lg ? (md ? 80 : 90) : 250,
+        value: !Lg ? (md ? 180 : 200) : 250,
       },
       opacity: {
         value: !Lg ? (md ? 0.3 : 0.4) : 0.5,

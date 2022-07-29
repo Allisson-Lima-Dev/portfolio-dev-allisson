@@ -32,6 +32,7 @@ export function Swiper({
       slidesPerView={slidesPerView || 1}
       spaceBetween={spaceBetween || 5}
       navigation={navigationView || false}
+      grabCursor
       breakpoints={
         breakpoints || {
           1500: {

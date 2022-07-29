@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -11,6 +11,9 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  SimpleGrid,
+  Textarea,
+  Input,
 } from "@chakra-ui/react";
 import {
   CardAbout,
@@ -20,6 +23,8 @@ import {
   CardCertificate,
   Swiper,
   SwiperSlide,
+  CardProject,
+  // Input,
 } from "~/components/index";
 import { Particles as configParticles } from "../mocks/particles";
 import { Particles as configParticlesSkills } from "../mocks/particlesSkills";
@@ -29,12 +34,17 @@ import type { Container, Engine } from "tsparticles-engine";
 import ImageHome from "~/assets/home.png";
 import ImageSobre from "~/assets/Sobre.png";
 import ImageSkills from "~/assets/imgSkills.png";
+import Whatssap from "~/assets/whatssap.png";
+import Contact from "~/assets/contact.png";
 import { DataAboutCard } from "~/mocks/dataCardAbout";
 import {
   iconsDataSkill,
   dataCardSoftSkill,
   dataCertificate,
 } from "~/mocks/dataSkills";
+import Link from "next/link";
+import useScrollSpy from "react-use-scrollspy";
+import { Icon } from "@iconify/react";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -45,15 +55,70 @@ export default function Home() {
   const particlesLoaded = async (container: Container | undefined) => {
     // console.log(container);
   };
+  const sectionRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+
+  const activeSection = useScrollSpy({
+    sectionElementRefs: sectionRefs,
+    offsetPx: -80,
+  });
+
+  const [view, setView] = useState(false);
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (window.scrollY > 170) {
+        setView(true);
+      } else {
+        setView(false);
+      }
+    });
+  }, []);
 
   return (
     <Box bg="#f8f8f8">
-      <Header />
+      {view && (
+        <Box
+          pos="fixed"
+          right={{ base: "2.5", md: "4" }}
+          bottom={{ base: "60px", md: "80px" }}
+          zIndex="1000"
+          cursor="pointer"
+          color={"#6EDB5C"}
+          bg="#fff"
+          borderRadius={"50%"}
+          p={{ base: "6px", md: "5px" }}
+        >
+          <Icon
+            width={"25px"}
+            icon="bytesize:chevron-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
+        </Box>
+      )}
+      <Link href="https://wa.me/+5598999682402?text=Olá+Allisson,+gostei+do+seu+Portfólio!+Gostaria+de+saber+mais+sobre+você!&app_absent=0">
+        <Image
+          src={Whatssap.src}
+          alt="Icone do WhatsApp"
+          w={{ base: "40px", lg: "50px" }}
+          pos="fixed"
+          right="2"
+          bottom={{ base: "10px", md: "20px" }}
+          zIndex="1000"
+          cursor="pointer"
+        />
+      </Link>
+      <Header activeSection={activeSection} />
       <Flex
         bg="#0f0f0f"
         h={{ base: "1000px", lg: "100vh" }}
-        id="container-home"
+        id="home"
         zIndex={1000}
+        ref={sectionRefs[0]}
       >
         <Particles
           id="tsparticles"
@@ -71,7 +136,7 @@ export default function Home() {
             <Box
               mt={{ base: "0px", lg: "100px" }}
               w={{ base: "100%", lg: "42%" }}
-              zIndex={2000}
+              zIndex={1000}
             >
               <Text fontSize={{ base: "25px", md: "37px" }} color="#6EDB5C">
                 Olá,
@@ -109,7 +174,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Flex>
-      <Box w="full" mb="80px" mt="-230px">
+      <Box w="full" mb="80px" mt="-230px" ref={sectionRefs[1]} id="about">
         <Layout>
           <Flex>
             <Swiper slidesPerView={3} spaceBetween={5}>
@@ -129,6 +194,7 @@ export default function Home() {
             justify={"space-between"}
             mt="50px"
             flexDir={{ base: "column", lg: "row" }}
+            id={"1"}
           >
             <Box>
               <Image
@@ -139,7 +205,7 @@ export default function Home() {
               />
             </Box>
             <Box w={{ base: "100%", lg: "50%" }}>
-              <Text fontSize={"40px"} color="#6EDB5C">
+              <Text fontSize={"40px"} color={"#6EDB5C"}>
                 Sobre
               </Text>
               <Text fontSize={"19px"}>
@@ -168,7 +234,7 @@ export default function Home() {
           </Flex>
         </Layout>
       </Box>
-      <Flex w="full" id="about" color="#fff" bg="red">
+      <Flex w="full" id="skill" color="#fff">
         <Particles
           id="tsparticlesSkills"
           init={particlesInit}
@@ -176,14 +242,15 @@ export default function Home() {
           options={configParticlesSkills()}
         />
         <Layout>
-          <Text fontSize={"40px"} color="#fff" mb="20px" mt="80px">
+          <Text fontSize={"40px"} color={"#fff"} mb="20px" mt="80px">
             Minhas Habilidades
           </Text>
           <Flex
+            ref={sectionRefs[2]}
             w="full"
             justify={"space-between"}
             // h="full"
-            zIndex={1000}
+            // zIndex={1000}
             flexDir={{ base: "column", lg: "row" }}
           >
             <Box w={{ base: "100%", lg: "50%" }} zIndex={1000}>
@@ -213,7 +280,6 @@ export default function Home() {
               mb={{ base: "10px", lg: "0" }}
               justify={{ base: "left", lg: "right" }}
               w={{ base: "100%", lg: "70%" }}
-              zIndex={1000}
             >
               <Image
                 src={ImageSkills.src}
@@ -226,7 +292,11 @@ export default function Home() {
             Metódos
           </Text>
           <Flex>
-            <Swiper style={{ zIndex: 1000 }} slidesPerView={3} spaceBetween={5}>
+            <Swiper
+              //  style={{ zIndex: 1000 }}
+              slidesPerView={3}
+              spaceBetween={5}
+            >
               {dataCardSoftSkill.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <CardAbout
@@ -245,7 +315,7 @@ export default function Home() {
           <Flex my={{ base: "10px", lg: "80px" }}>
             <Swiper
               className="mySwiper"
-              style={{ zIndex: 1000 }}
+              // style={{ zIndex: 1000 }}
               slidesPerView={7}
               spaceBetween={5}
               breakpoints={{
@@ -295,8 +365,9 @@ export default function Home() {
             flexWrap="wrap"
             gap={5}
             mb="50px"
+            ref={sectionRefs[3]}
           >
-            <Box>
+            <Box id="project">
               <Text fontSize={"40px"} color="#fff" mt="10px">
                 Projetos
               </Text>
@@ -305,38 +376,88 @@ export default function Home() {
                 Detalhes" para visualizar o repositório do Projeto.
               </Text>
             </Box>
-            <Tabs zIndex={1000} variant="unstyled" w={"full"}>
-              <TabList flexWrap={"wrap"}>
-                {[
-                  "Todos",
-                  "Front End",
-                  "Mobile",
-                  "Back End",
-                  "UI/UX Desgin",
-                ].map((item, idx) => (
-                  <Tab
-                    key={idx}
-                    borderRadius="5px"
-                    my="5px"
-                    _selected={{
-                      color: "white",
-                      bg: "#6cc55d",
-                      borderRadius: "5px",
-                    }}
-                  >
-                    {item}
-                  </Tab>
-                ))}
+            <Tabs variant="unstyled" w={"full"}>
+              <TabList flexWrap={"wrap"} mb="20px">
+                {["Front End", "Mobile", "Back End", "UI/UX Desgin"].map(
+                  (item, idx) => (
+                    <Tab
+                      zIndex={1000}
+                      key={idx}
+                      // borderRadius="5px"
+                      my="5px"
+                      _selected={{
+                        color: "white",
+                        borderBottom: "2px solid #6cc55d",
+                        // bg: "#6cc55d",
+                        // borderRadius: "5px",
+                      }}
+                    >
+                      {item}
+                    </Tab>
+                  )
+                )}
               </TabList>
-              <TabPanels h={"500px"} w="full">
+              <TabPanels w="full">
                 <TabPanel>
-                  <p>one!</p>
+                  <Swiper
+                    className="mySwiperProject"
+                    // style={{ zIndex: 1000 }}
+                    slidesPerView={3}
+                  >
+                    {Array.from({ length: 10 }).map((_, idx) => (
+                      <SwiperSlide key={idx}>
+                        <CardProject />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </TabPanel>
                 <TabPanel>
-                  <p>two!</p>
+                  <Swiper
+                    className="mySwiperProject"
+                    // style={{ zIndex: 1000 }}
+                    slidesPerView={3}
+                  >
+                    {Array.from({ length: 10 }).map((_, idx) => (
+                      <SwiperSlide key={idx}>
+                        <CardProject />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </TabPanel>
               </TabPanels>
             </Tabs>
+          </Flex>
+          <Flex justify={"center"} mb="50px">
+            <Box>
+              <Text fontSize={"40px"} color="#fff" my="10px">
+                Entre em Contato
+              </Text>
+              <Input
+                name="name"
+                placeholder="nome"
+                w="full"
+                // variant="flushed"
+                my="5px"
+              />
+              <Input
+                name="email"
+                placeholder="Email"
+                w="full"
+                // variant="flushed"
+                my="5px"
+              />
+              <Textarea my="5px" />
+              <Button
+                bg="#6EDB5C"
+                color={"#fff"}
+                w={{ base: "full", md: "150px", lg: "153px" }}
+                h="45px"
+                fontSize={{ base: "17px", md: "20px" }}
+                mt="38px"
+              >
+                Enviar
+              </Button>
+            </Box>
           </Flex>
         </Layout>
       </Flex>
