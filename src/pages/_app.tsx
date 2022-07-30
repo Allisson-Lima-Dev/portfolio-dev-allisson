@@ -1,16 +1,32 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import LottieLoading from "~/lottie/loading.json";
+import Lottie from "react-lottie";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: LottieLoading,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   useEffect(() => {
-    setShowChild(true);
+    setTimeout(() => {
+      setShowChild(true);
+    }, 3000);
   }, []);
 
   if (!showChild) {
-    return null;
+    return (
+      <Flex h="100vh" bg="#0f0f0f" color="#fff" justify="center" align="center">
+        <Lottie options={defaultOptions} height={400} width={400} />
+      </Flex>
+    );
   }
 
   if (typeof window === "undefined") {
