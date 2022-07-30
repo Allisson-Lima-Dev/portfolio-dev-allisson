@@ -45,6 +45,8 @@ import {
 import Link from "next/link";
 import useScrollSpy from "react-use-scrollspy";
 import { Icon } from "@iconify/react";
+import ContactData from "~/lottie/contact.json";
+import Lottie from "react-lottie";
 
 export default function Home() {
   const particlesInit = async (main: Engine) => {
@@ -54,6 +56,14 @@ export default function Home() {
 
   const particlesLoaded = async (container: Container | undefined) => {
     // console.log(container);
+  };
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: ContactData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
   const sectionRefs = [
     useRef(null),
@@ -93,14 +103,20 @@ export default function Home() {
           borderRadius={"50%"}
           p={{ base: "6px", md: "5px" }}
         >
-          <Icon
-            width={"25px"}
-            icon="bytesize:chevron-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          />
+          <Link href={"#home"}>
+            <Icon
+              width={"25px"}
+              icon="bytesize:chevron-top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            />
+          </Link>
         </Box>
       )}
-      <Link href="https://wa.me/+5598999682402?text=Olá+Allisson,+gostei+do+seu+Portfólio!+Gostaria+de+saber+mais+sobre+você!&app_absent=0">
+      <a
+        href="https://wa.me/+5598999682402?text=Olá+Allisson,+gostei+do+seu+Portfólio!+Gostaria+de+saber+mais+sobre+você!&app_absent=0"
+        target="_blank"
+        rel="noreferrer"
+      >
         <Image
           src={Whatssap.src}
           alt="Icone do WhatsApp"
@@ -111,7 +127,7 @@ export default function Home() {
           zIndex="1000"
           cursor="pointer"
         />
-      </Link>
+      </a>
       <Header activeSection={activeSection} />
       <Flex
         bg="#0f0f0f"
@@ -158,35 +174,47 @@ export default function Home() {
                 estudando UI/UX Designer.
               </Text>
               <Flex mt="15px">
-                <Flex
-                  bg="#6EDB5C"
-                  h="40px"
-                  w="40px"
-                  borderRadius={"5px"}
-                  align={"center"}
-                  justify="center"
-                  mr="10px"
+                <a
+                  href="https://www.linkedin.com/in/allisson-lima-3382121b6/"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <Icon
-                    width={"25px"}
-                    icon="akar-icons:linkedin-fill"
-                    color="#fff"
-                  />
-                </Flex>
-                <Flex
-                  bg="#6EDB5C"
-                  h="40px"
-                  w="40px"
-                  borderRadius={"5px"}
-                  align={"center"}
-                  justify="center"
+                  <Flex
+                    bg="#6EDB5C"
+                    h="40px"
+                    w="40px"
+                    borderRadius={"5px"}
+                    align={"center"}
+                    justify="center"
+                    mr="10px"
+                  >
+                    <Icon
+                      width={"25px"}
+                      icon="akar-icons:linkedin-fill"
+                      color="#fff"
+                    />
+                  </Flex>
+                </a>
+                <a
+                  href="https://github.com/Allisson-Lima-Dev"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <Icon
-                    width={"25px"}
-                    icon="akar-icons:github-fill"
-                    color="#fff"
-                  />
-                </Flex>
+                  <Flex
+                    bg="#6EDB5C"
+                    h="40px"
+                    w="40px"
+                    borderRadius={"5px"}
+                    align={"center"}
+                    justify="center"
+                  >
+                    <Icon
+                      width={"25px"}
+                      icon="akar-icons:github-fill"
+                      color="#fff"
+                    />
+                  </Flex>
+                </a>
               </Flex>
               <Button
                 bg="#6EDB5C"
@@ -458,7 +486,13 @@ export default function Home() {
               </TabPanels>
             </Tabs>
           </Flex>
-          <Flex justify={"center"} mb="50px">
+          <Flex
+            justify={{ base: "center", lg: "space-between" }}
+            mb="50px"
+            w="full"
+            flexDir={{ base: "column", lg: "row" }}
+          >
+            <Lottie options={defaultOptions} />
             <Box>
               <Text fontSize={"40px"} color="#fff" my="10px">
                 Entre em Contato
