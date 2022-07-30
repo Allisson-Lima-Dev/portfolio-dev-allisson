@@ -70,7 +70,6 @@ export function Header({ activeSection }: IPropsHeader) {
       true
     );
   }, []);
-  console.log(activeMenu);
 
   return (
     <Flex

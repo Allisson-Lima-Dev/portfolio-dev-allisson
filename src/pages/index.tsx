@@ -75,7 +75,7 @@ export default function Home() {
 
   const activeSection = useScrollSpy({
     sectionElementRefs: sectionRefs,
-    offsetPx: -80,
+    offsetPx: -20,
   });
 
   const [view, setView] = useState(false);
@@ -487,13 +487,17 @@ export default function Home() {
             </Tabs>
           </Flex>
           <Flex
+            ref={sectionRefs[4]}
             justify={{ base: "center", lg: "space-between" }}
             mb="50px"
             w="full"
             flexDir={{ base: "column", lg: "row" }}
+            id="contact"
           >
-            <Lottie options={defaultOptions} />
-            <Box>
+            <Box ml={{ base: "0", lg: "-120px" }} w="full">
+              <Lottie options={defaultOptions} />
+            </Box>
+            <Box mt={{ base: "0", lg: "40px" }}>
               <Text fontSize={"40px"} color="#fff" my="10px">
                 Entre em Contato
               </Text>
@@ -511,7 +515,7 @@ export default function Home() {
                 // variant="flushed"
                 my="5px"
               />
-              <Textarea my="5px" />
+              <Textarea my="5px" placeholder="Descrição" />
               <Button
                 bg="#6EDB5C"
                 color={"#fff"}
@@ -524,6 +528,22 @@ export default function Home() {
               </Button>
             </Box>
           </Flex>
+          <Box mb="100px">
+            <Text fontSize={"40px"} color="#fff" mt="10px">
+              Serviços Prestados
+            </Text>
+            <Swiper
+              className="mySwiperProject"
+              // style={{ zIndex: 1000 }}
+              slidesPerView={3}
+            >
+              {Array.from({ length: 10 }).map((_, idx) => (
+                <SwiperSlide key={idx}>
+                  <CardProject />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
         </Layout>
       </Flex>
     </Box>
